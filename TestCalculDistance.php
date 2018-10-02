@@ -1,43 +1,63 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
+<?php
+
+    include 'Admin.class.php';
+    include 'Admin.manager.php';
+
+    //$adminManager = new AdminManager();
+
+    //var_dump($adminManager);
+
+?>
+
+<!doctype html>
+<html lang="fr">
     <head>
-        <meta charset="UTF-8">
-        <title></title>
+        <meta charset="utf-8">
+        <title>HTML5 : Géolocalisation</title>
     </head>
-    <body>
-        <?php
-        // put your code here
-        include 'classes/Activite.class.php';
-        include 'classes/Lieux.class.php';
-        include 'classes/SousActivite.class.php';
+<body>
+
+
+<!-- Un élément HTML pour recueillir l’affichage -->
+<div id="infoposition"></div>
+
+<script>
+    function convertRad(input){
+        return (Math.PI * input)/180;
+    }
+
+    function Distance(lat_a_degre, lon_a_degre, lat_b_degre, lon_b_degre){
         
-        $lieux1 = new Lieux(1,"Irish Bar","0405040504","Mende","15 rue jesaispas");
-        $Activite1 = new Activite("Musique");
-        $lieux2 = new Lieux(2,"Georges frêche","064567879","Mende","6 Boulevar pêche");
-            
-        echo'<pre>';
-            var_dump($lieux1);
-        echo '</pre><pre>';
-            var_dump($lieux2);
-        echo '</pre><pre>';
-            var_dump($Activite1);
-        echo '</pre>';
-            
-        $SousActivite1 = new SousActivite($Activite1,"Rock");
-        $Activite1-> Lieux = [$lieux1,$lieux2];
-            
-        echo '<pre>';
-            var_dump($Activite1);
-        echo '</pre><pre>';
-        //    $liste = $Activite1->getLieuActivite();
-        //    var_dump($liste);
-        echo '</pre>';
+        R = 6378000 //Rayon de la terre en mètre 
+
+        lat_a = convertRad(lat_a_degre);
+        lon_a = convertRad(lon_a_degre);
+        lat_b = convertRad(lat_b_degre);
+        lon_b = convertRad(lon_b_degre);
         
-        ?>
-    </body>
+        d = R * (Math.PI/2 - Math.asin( Math.sin(lat_b) * Math.sin(lat_a) + Math.cos(lon_b - lon_a) * Math.cos(lat_b) * Math.cos(lat_a)))
+        return d;
+    }
+
+
+
+    function maPosition(position) {
+         R = 6378000 //Rayon de la terre en mètre 
+
+        lat_a = convertRad(position.coords.latitude);
+        lon_a = convertRad(position.coords.longitude);
+        lat_b = convertRad(position.coords.latitude);
+        lon_b = convertRad(position.coords.longitude);
+        
+        d = R * (Math.PI/2 - Math.asin( Math.sin(lat_b) * Math.sin(lat_a) + Math.cos(lon_b - lon_a) * Math.cos(lat_b) * Math.cos(lat_a)))
+        
+        document.getElementById('infoposition').innerHTML = d;
+
+    }
+
+    if(navigator.geolocation)
+        navigator.geolocation.getCurrentPosition(maPosition);
+
+</script>
+</body>
 </html>
