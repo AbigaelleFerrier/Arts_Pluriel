@@ -13,11 +13,11 @@
  */
 class Lieux {
     //put your code here
-     public getData(){
-        try{
-            }
-        }catch(Exception $e){
-            
-        }
-    }
+//     public getData(){
+//        try{
+//            }
+//        }catch(Exception $e){
+//            
+//        }
+//    }
 }
