@@ -1,14 +1,3 @@
-<?php
-
-    include 'Admin.class.php';
-    include 'Admin.manager.php';
-
-    //$adminManager = new AdminManager();
-
-    //var_dump($adminManager);
-
-?>
-
 <!doctype html>
 <html lang="fr">
     <head>
@@ -19,45 +8,44 @@
 
 
 <!-- Un élément HTML pour recueillir l’affichage -->
-<div id="infoposition"></div>
+<div id="infoposition">
+    
 
-<script>
-    function convertRad(input){
-        return (Math.PI * input)/180;
+<?php
+
+    echo distance(44.5259776, 3.4701312, 44.5545281, 4.7103981);
+
+    function distance($lat1, $lng1, $lat2, $lng2, $unit = 'k') {
+        $earth_radius = 6378137;   // Terre = sphère de 6378km de rayon
+        $rlo1 = deg2rad($lng1);
+        $rla1 = deg2rad($lat1);
+        $rlo2 = deg2rad($lng2);
+        $rla2 = deg2rad($lat2);
+        $dlo = ($rlo2 - $rlo1) / 2;
+        $dla = ($rla2 - $rla1) / 2;
+        $a = (sin($dla) * sin($dla)) + cos($rla1) * cos($rla2) * (sin($dlo) * sin($dlo));
+        $d = 2 * atan2(sqrt($a), sqrt(1 - $a));
+        //
+        $meter = ($earth_radius * $d);
+        if ($unit == 'k') {
+            return $meter / 1000;
+        }
+        return $meter;
     }
 
-    function Distance(lat_a_degre, lon_a_degre, lat_b_degre, lon_b_degre){
-        
-        R = 6378000 //Rayon de la terre en mètre 
 
-        lat_a = convertRad(lat_a_degre);
-        lon_a = convertRad(lon_a_degre);
-        lat_b = convertRad(lat_b_degre);
-        lon_b = convertRad(lon_b_degre);
-        
-        d = R * (Math.PI/2 - Math.asin( Math.sin(lat_b) * Math.sin(lat_a) + Math.cos(lon_b - lon_a) * Math.cos(lat_b) * Math.cos(lat_a)))
-        return d;
-    }
+?>
 
 
 
-    function maPosition(position) {
-         R = 6378000 //Rayon de la terre en mètre 
+</div>
 
-        lat_a = convertRad(position.coords.latitude);
-        lon_a = convertRad(position.coords.longitude);
-        lat_b = convertRad(position.coords.latitude);
-        lon_b = convertRad(position.coords.longitude);
-        
-        d = R * (Math.PI/2 - Math.asin( Math.sin(lat_b) * Math.sin(lat_a) + Math.cos(lon_b - lon_a) * Math.cos(lat_b) * Math.cos(lat_a)))
-        
-        document.getElementById('infoposition').innerHTML = d;
+    <!-- <script>
+        if(navigator.geolocation)
+            navigator.geolocation.getCurrentPosition(maPosition);
+    </script> -->
 
-    }
 
-    if(navigator.geolocation)
-        navigator.geolocation.getCurrentPosition(maPosition);
 
-</script>
 </body>
 </html>
