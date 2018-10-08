@@ -32,13 +32,18 @@
 
             <script type="text/javascript">
                 var i = 1;
-
-                var idInter=setInterval('demarage();',1500);
+                var j = 0;
+                var idInter=setInterval('demarage();',3000);
 
                 function demarage() {
                     obj = document.getElementById('homeImg');
-                    obj.setAttribute("src", "images/bg/bg"+i+".jpg)");
-                    i = getRandomInt(4)+1;
+                    obj.setAttribute("src", "images/bg/bg"+i+".jpg");
+                    i++;
+                    if (i==6) {i=1}
+                    //obj.setAttribute("class", "fadeIn"+j);
+                   obj.style.webkitAnimationPlayState="running";
+
+                    
                 }
 
                 function getRandomInt(max) {
