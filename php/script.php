@@ -1,17 +1,3 @@
-<!-- Flotting buuton -->
-<div class="fixed-action-btn">
-  <a href="#nav" class="btn-floating btn-large teal  js-scrollTo scrollspy" >
-    <i class="large material-icons scrollspy">arrow_upward</i>
-  </a>
-   <ul>
-    <li><a href="#Stage" 	 class="btn-floating btn-large teal js-scrollTo scrollspy">Stage</a></li>
-    <li><a href="#PortFolio" class="btn-floating btn-large teal js-scrollTo scrollspy">Projet</a></li>
-   
-  </ul>
-</div>
-      
-
-
 <!--  Scripts-->
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="js/materialize.js"></script>
@@ -36,6 +22,15 @@
 	    var elems = document.querySelectorAll('.modal');
 	    var instances = M.Modal.init(elems, options);
 	});
+
+	document.addEventListener('DOMContentLoaded', function() {
+	    var elems = document.querySelectorAll('.tooltipped');
+	    var instances = M.Tooltip.init(elems, options);
+	  });
+
+	$(document).ready(function() {
+    	M.updateTextFields();
+  	});
 
 
 	$(document).ready(function() {

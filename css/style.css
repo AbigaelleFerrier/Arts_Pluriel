@@ -6,6 +6,7 @@
  * Made By MaterializeCSS.com
  */
 
+
 nav ul a,
 nav .brand-logo {
   color: #26a69a;
@@ -37,12 +38,16 @@ p {
   #index-banner .section {
     top: 10%;
   }
+  #containerFormConnextion {
+    padding: 5em 0em !important;
+  }
 }
 
 @media only screen and (max-width : 600px) {
   #index-banner .section {
     top: 0;
   }
+  
 }
 
 .icon-block {
@@ -56,22 +61,72 @@ footer.page-footer {
   margin: 0;
 }
 
+.noMarge {
+  margin: 0.1em;
+}
+
+
+/* NAV */
+
+.typoLogo {
+  font-family: 'Kaushan Script', cursive !important;
+}
+
+#logo-container {
+  font-size: 3em;
+}
+
+.disabledLi {
+  color: #555 !important;
+}
+
+.disabledLi:hover {
+  color: #fc8383 !important;
+}
+
+.disabledLi:active {
+  color: #fc8383 !important;
+}
+
+/* HOME */
+
+.homeFond {
+  background: rgba(38, 166, 154, 0.40);
+}
+
 .fadeIn {
   -webkit-animation-name: fadeIn;
   animation-name: fadeIn;
-  -webkit-animation-duration: 3s;
-  animation-duration: 3s;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
  
 
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
-  animation-iteration-count: infinite;
   }
   @-webkit-keyframes fadeIn {
     0% {opacity: 0;}
-    50% {opacity: 1;}
+    100% {opacity: 1;}
   }
   @keyframes fadeIn {
     0% {opacity: 0;}
-    50% {opacity: 1;}
+    100% {opacity: 1;}
   } 
+
+
+/* connexion */
+
+#containerFormConnextion {
+  padding: 5em;
+  background: url("https://picsum.photos/g/1920/1080/?random");
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  height: -webkit-fill-available;
+}
+
+.fondForm {
+  background: #f7f7f7;
+  padding: 2.5em !important;
+  border-radius: 25px;
+}
