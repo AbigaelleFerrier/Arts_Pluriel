@@ -13,7 +13,7 @@
  */
 require_once("database.class.php");
 
-class Utilisateur {
+class UtilisateurManager {
     //put your code here
     private $db;
     

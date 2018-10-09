@@ -19,8 +19,7 @@ class Lieux {
     private $villeL;
     private $adresseL;
     
-    public function __construct($idL,$labelL,$telL,$villeL,$adresseL){
-        $this-> idL = $idL;
+    public function __construct($labelL,$telL,$villeL,$adresseL){
         $this-> labelL = $labelL;
         $this-> telL = $telL;
         $this-> villeL = $villeL;
@@ -33,11 +32,11 @@ class Lieux {
     function getVille() { return $this->villeL; }
     function getAdresse() { return $this->adresseL; }
 
-    function setIdL($idL) { $this->idL = $idL; }
-    function setLabelL($labelL) { $this->labelL = $labelL; }
-    function setTelL($telL) { $this->telL = $telL; }
-    function setVilleL($villeL) { $this->villeL = $villeL; }
-    function setAdresseL($adresseL) { $this->adresseL = $adresseL; }
+    function setId($idL) { $this->idL = $idL; }
+    function setLabel($labelL) { $this->labelL = $labelL; }
+    function setTel($telL) { $this->telL = $telL; }
+    function setVille($villeL) { $this->villeL = $villeL; }
+    function setAdresse($adresseL) { $this->adresseL = $adresseL; }
 
 
 }

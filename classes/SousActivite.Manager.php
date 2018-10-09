@@ -13,7 +13,7 @@
  */
 require_once("database.class.php");
 
-class SousActivite {
+class SousActiviteManager {
     //put your code here
     private $db;
     
@@ -49,8 +49,6 @@ class SousActivite {
             $traitement->bindparam(1,$param1);
             $param2=$SA->getIda();
             $traitement->bindparam(2,$param2);
-            $param3=$SA->getId();
-            $traitement->bindparam(3,$param3);
             $traitement->execute();
         }
     }

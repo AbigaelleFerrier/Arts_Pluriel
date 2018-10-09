@@ -13,7 +13,7 @@
  */
 require_once("database.class.php");
 
-class Message {
+class MessageManager {
     //put your code here
     private $db;
     

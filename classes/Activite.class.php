@@ -28,8 +28,8 @@ class Activite {
 
     function getLieux() { return $this->Lieux; }
 
-    function setIdA($idA) { $this->idA = $idA; }
-    function setNomA($nomA) { $this->nomA = $nomA; }
+    function setId($idA) { $this->idA = $idA; }
+    function setNom($nomA) { $this->nomA = $nomA; }
 
     function setLieux($Lieux) { $this->Lieux = $Lieux; }
 

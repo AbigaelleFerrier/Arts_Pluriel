@@ -13,7 +13,7 @@
  */
 require_once("database.class.php");
 
-class Admin {
+class AdminManager {
     //put your code here
     private $db;
     
@@ -26,7 +26,7 @@ class Admin {
         if ($adm->getId()!=''){
             $query = "select count(*) as nb from `ADMIN` where `idAdm`=?";
             $traitement = $this->db->prepare($query);
-            $param1=$lieu->getId();
+            $param1=$adm->getId();
             $traitement->bindparam(1,$param1);
             $traitement->execute();
             $ligne = $traitement->fetch();
@@ -53,8 +53,6 @@ class Admin {
             $traitement->bindparam(2,$param2);
             $param3=$adm->getMail();
             $traitement->bindparam(3,$param3);
-            $param4=$adm->getId();
-            $traitement->bindparam(4,$param4);
             $traitement->execute();
         }
     }
@@ -90,7 +88,7 @@ class Admin {
             die ("Erreur : ".$e->getMessage());
         }
         while ($row = $result->fetch()){
-            $admin = new Admin($row['pseudo'],$row['mdpAdm'],$row['mailMdp']);
+            $admin = new Admin($row['pseudo'],$row['mdpAdm'],$row['mailAdm']);
             $admin->setId($row['idAdm']);
             $admList[] = $admin;
         }

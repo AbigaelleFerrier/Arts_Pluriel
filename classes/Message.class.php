@@ -9,8 +9,7 @@
 
 
 		/* CONTRUC */
-		public function __construct ($idM, $textM, $recu, $envoyer) {
-			$this->idM		= $idM;
+		public function __construct ($textM, $recu, $envoyer) {
 			$this->textM	= $textM;
 			$this->recu		= $recu;
 			$this->envoyer	= $envoyer;
@@ -23,8 +22,8 @@
                 function getIdRecois() { return $this->recu; }
                 function getIdEnvoie() { return $this->envoyer; }
 
-                function setIdM($idM) { $this->idM = $idM; }
-                function setTextM($textM) { $this->textM = $textM; }
+                function setId($idM) { $this->idM = $idM; }
+                function setText($textM) { $this->textM = $textM; }
                 function setRecu($recu) { $this->recu = $recu; }
                 function setEnvoyer($envoyer) { $this->envoyer = $envoyer; }
 

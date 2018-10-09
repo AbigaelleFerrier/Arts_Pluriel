@@ -8,8 +8,7 @@
 
 
 		/* CONTRUC */
-		public function __construct ($idAdm, $pseudo, $mdpAdm, $mailAdm) {
-			$this->idAdm 	= $idAdm;
+		public function __construct ($pseudo, $mdpAdm, $mailAdm) {
 			$this->pseudo 	= $pseudo;
 			$this->mdpAdm 	= $mdpAdm;
 			$this->mailAdm 	= $mailAdm;
@@ -22,10 +21,10 @@
                 function getMdp() { return $this->mdpAdm; }
                 function getMail() { return $this->mailAdm; }
 
-                function setIdAdm($idAdm) { $this->idAdm = $idAdm; }
+                function setId($idAdm) { $this->idAdm = $idAdm; }
                 function setPseudo($pseudo) { $this->pseudo = $pseudo; }
-                function setMdpAdm($mdpAdm) { $this->mdpAdm = $mdpAdm; }
-                function setMailAdm($mailAdm) { $this->mailAdm = $mailAdm; }
+                function setMdp($mdpAdm) { $this->mdpAdm = $mdpAdm; }
+                function setMail($mailAdm) { $this->mailAdm = $mailAdm; }
 
                 
 		/* METHODE */

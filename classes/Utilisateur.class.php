@@ -20,9 +20,8 @@
 
 
 		/* CONTRUC */
-		public function __construct ($idU, $pseudoU, $nomU, $prenomU, $mailU, $telU, $villeU, $distanceU, $mdpU, $ddnU,$bioU,$LAT,$LONG, $TabSousActivite, $TabActivite)
+		public function __construct ($pseudoU, $nomU, $prenomU, $mailU, $telU, $villeU, $distanceU, $mdpU, $ddnU,$bioU,$LAT,$LONG, $TabSousActivite, $TabActivite)
 		{
-			$this->idU			= $idU;
 			$this->pseudoU			= $pseudoU;
 			$this->nomU			= $nomU;
 			$this->prenomU			= $prenomU;
@@ -59,19 +58,19 @@
                 function getTabSousActivite() { return $this->TabSousActivite; }
                 function getTabActivite() { return $this->TabActivite; }
 
-                function setIdU($idU) { $this->idU = $idU; }
-                function setPseudoU($pseudoU) { $this->pseudoU = $pseudoU; }
-                function setNomU($nomU) { $this->nomU = $nomU; }
-                function setPrenomU($prenomU) { $this->prenomU = $prenomU; }
-                function setMailU($mailU) { $this->mailU = $mailU; }
-                function setTelU($telU) { $this->telU = $telU; }
-                function setVilleU($villeU) { $this->villeU = $villeU; }
-                function setDistanceU($distanceU) { $this->distanceU = $distanceU; }
-                function setMdpU($mdpU) { $this->mdpU = $mdpU; }
-                function setDdnU($ddnU) { $this->ddnU = $ddnU; }
-                function setBioU($bioU) { $this->bioU = $bioU; }
-                function setLAT($LAT) { $this->LAT = $LAT; }
-                function setLONG($LONG) { $this->LONG = $LONG; }
+                function setId($idU) { $this->idU = $idU; }
+                function setPseudo($pseudoU) { $this->pseudoU = $pseudoU; }
+                function setNom($nomU) { $this->nomU = $nomU; }
+                function setPrenom($prenomU) { $this->prenomU = $prenomU; }
+                function setMail($mailU) { $this->mailU = $mailU; }
+                function setTel($telU) { $this->telU = $telU; }
+                function setVille($villeU) { $this->villeU = $villeU; }
+                function setDistance($distanceU) { $this->distanceU = $distanceU; }
+                function setMdp($mdpU) { $this->mdpU = $mdpU; }
+                function setDdn($ddnU) { $this->ddnU = $ddnU; }
+                function setBio($bioU) { $this->bioU = $bioU; }
+                function setLat($LAT) { $this->LAT = $LAT; }
+                function setLong($LONG) { $this->LONG = $LONG; }
 
                 function setTabSousActivite($TabSousActivite) { $this->TabSousActivite = $TabSousActivite; }
                 function setTabActivite($TabActivite) { $this->TabActivite = $TabActivite; }

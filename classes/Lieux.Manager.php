@@ -13,7 +13,7 @@
  */
 require_once("database.class.php");
 
-class Lieux {
+class LieuxManager {
     //put your code here
     private $db;
     
@@ -57,8 +57,6 @@ class Lieux {
             $traitement->bindparam(3,$param3);
             $param4=$lieu->getAdresse();
             $traitement->bindparam(4,$param4);
-            $param5=$lieu->getId();
-            $traitement->bindparam(5,$param5);
             $traitement->execute();
         }
     }

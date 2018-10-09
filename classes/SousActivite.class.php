@@ -27,7 +27,7 @@ class SousActivite {
     function getSpecialite() { return $this->specialite; }
     function getIda() { return $this->Activite; }
 
-    function setIdP($idP) { $this->idP = $idP; }
+    function setId($idP) { $this->idP = $idP; }
     function setSpecialite($specialite) { $this->specialite = $specialite; }
     function setActivite($Activite) { $this->Activite = $Activite; }
 
