@@ -7,13 +7,13 @@
  */
 
 /**
- * Description of ActiviteManager
+ * Description of Message
  *
  * @author etudiant
  */
 require_once("database.class.php");
 
-class Activite {
+class Message {
     //put your code here
     private $db;
     
@@ -21,48 +21,56 @@ class Activite {
         $this->db=$database;
     }
     
-    public function save(Activite $act){        
+    public function save(Message $mess){        
         $nbRows = 0;
-        if ($act->getId()!=''){
-            $query = "select count(*) as nb from `ACTIVITE` where `idA`=?";
+        if ($mess->getId()!=''){
+            $query = "select count(*) as nb from `MESSAGE` where `idM`=?";
             $traitement = $this->db->prepare($query);
-            $param1=$act->getId();
+            $param1=$mess->getId();
             $traitement->bindparam(1,$param1);
             $traitement->execute();
             $ligne = $traitement->fetch();
             $nbRows=$ligne[0];
         }
         if ($nbRows > 0){ 
-            $query = "update `ACTIVITE` set `nomA`=? where `idA`=?";
+            $query = "update `MESSAGE` set `textM`=?, `idUEnvoie`=?, `idURecois`=? where `idM`=?";
             $traitement = $this->db->prepare($query);
-            $param1=$act->getNom();
+            $param1=$mess->getText();
             $traitement->bindparam(1,$param1);
-            $param2=$act->getId();
+            $param2=$mess->getIdEnvoie();
             $traitement->bindparam(2,$param2);
+            $param3=$mess->getIdRecois();
+            $traitement->bindparam(3,$param3);
+            $param4=$mess->getId();
+            $traitement->bindparam(4,$param4);
             $traitement->execute();
         }else{ 
-            $query = "insert into `ACTIVITE` (`nomA`) values (?)";
+            $query = "insert into `MESSAGE` (`textM`, `idUEnvoie`, `idURecois`) values (?,?,?)";
             $traitement = $this->db->prepare($query);
-            $param1=$act->getNom();
+            $param1=$mess->getText();
             $traitement->bindparam(1,$param1);
+            $param2=$mess->getIdEnvoie();
+            $traitement->bindparam(2,$param2);
+            $param3=$mess->getIdRecois();
+            $traitement->bindparam(3,$param3);
             $traitement->execute();
         }
     }
     
-    public function delete(Activite $act){
+    public function delete(Message $mess){
         $nbRows = 0;
-        if ($act->getId()!=''){                    
-            $query = "select count(*) as nb from `ACTIVITE` where `idA`=?";
+        if ($mess->getId()!=''){                    
+            $query = "select count(*) as nb from `MESSAGE` where `idM`=?";
             $traitement = $this->db->prepare($query);
-            $param1 = $act->getId();
+            $param1 = $mess->getId();
             $traitement->bindparam(1,$param1);
             $traitement->execute();
             $ligne = $traitement->fetch();
             $nbRows=$ligne[0];
         }if ($nbRows > 0){
-            $query = "delete from `ACTIVITE` where `idA`=?";
+            $query = "delete from `MESSAGE` where `idM`=?";
             $traitement = $this->db->prepare($query);
-            $param1 = $act->getId();
+            $param1 = $mess->getId();
             $traitement->bindparam(1,$param1);
             $traitement->execute();            
             return true;
@@ -72,23 +80,23 @@ class Activite {
     }
     
     public function getList($restriction='WHERE 1'){
-        $query = "select * from `ACTIVITE` ".$restriction."";
-        $actList = Array();
+        $query = "select * from `MESSAGE` ".$restriction."";
+        $messList = Array();
         try{
             $result = $this->db->Query($query);
         }catch(PDOException $e){
             die ("Erreur : ".$e->getMessage());
         }
         while ($row = $result->fetch()){
-            $activite = new Activite($row['nomA']);
-            $activite->setId($row['idA']);
-            $actList[] = $activite;
+            $message = new Message($row['textM'],$row['idUEnvoie'],$row['idURecois']);
+            $message->setId($row['idM']);
+            $messList[] = $message;
         }
-        return $actList;   
+        return $messList;   
     }
     
     public function get($id){
-        $query = "select * from `ACTIVITE` WHERE `idA`=?";
+        $query = "select * from `MESSAGE` WHERE `idM`=?";
         try{
             $traitement = $this->db->prepare($query);
             $traitement->bindparam(1,$id);
@@ -97,8 +105,8 @@ class Activite {
             die ("Erreur : ".$e->getMessage());
         }
         $row = $traitement->fetch();
-        $activite = new Activite($row['nomA']);
-        $activite->setId($row['idA']);
-        return $activite;    
+        $message = new Message($row['textM'],$row['idUEnvoie'],$row['idURecois']);
+        $message->setId($row['idM']);
+        return $message;    
     }
 }

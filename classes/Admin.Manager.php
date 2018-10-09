@@ -7,13 +7,13 @@
  */
 
 /**
- * Description of ActiviteManager
+ * Description of Admin
  *
  * @author etudiant
  */
 require_once("database.class.php");
 
-class Activite {
+class Admin {
     //put your code here
     private $db;
     
@@ -21,48 +21,58 @@ class Activite {
         $this->db=$database;
     }
     
-    public function save(Activite $act){        
+    public function save(Admin $adm){        
         $nbRows = 0;
-        if ($act->getId()!=''){
-            $query = "select count(*) as nb from `ACTIVITE` where `idA`=?";
+        if ($adm->getId()!=''){
+            $query = "select count(*) as nb from `ADMIN` where `idAdm`=?";
             $traitement = $this->db->prepare($query);
-            $param1=$act->getId();
+            $param1=$lieu->getId();
             $traitement->bindparam(1,$param1);
             $traitement->execute();
             $ligne = $traitement->fetch();
             $nbRows=$ligne[0];
         }
         if ($nbRows > 0){ 
-            $query = "update `ACTIVITE` set `nomA`=? where `idA`=?";
+            $query = "update `ADMIN` set `pseudo`=?, `mdpAdm`=?, `mailAdm`=? where `idAdm`=?";
             $traitement = $this->db->prepare($query);
-            $param1=$act->getNom();
+            $param1=$adm->getPseudo();
             $traitement->bindparam(1,$param1);
-            $param2=$act->getId();
+            $param2=$adm->getMdp();
             $traitement->bindparam(2,$param2);
+            $param3=$adm->getMail();
+            $traitement->bindparam(3,$param3);
+            $param4=$adm->getId();
+            $traitement->bindparam(4,$param4);
             $traitement->execute();
         }else{ 
-            $query = "insert into `ACTIVITE` (`nomA`) values (?)";
+            $query = "insert into `ADMIN` (`pseudo`, `mdpAdm`, `mailAdm`) values (?,?,?)";
             $traitement = $this->db->prepare($query);
-            $param1=$act->getNom();
+            $param1=$adm->getPseudo();
             $traitement->bindparam(1,$param1);
+            $param2=$adm->getMdp();
+            $traitement->bindparam(2,$param2);
+            $param3=$adm->getMail();
+            $traitement->bindparam(3,$param3);
+            $param4=$adm->getId();
+            $traitement->bindparam(4,$param4);
             $traitement->execute();
         }
     }
     
-    public function delete(Activite $act){
+    public function delete(Admin $adm){
         $nbRows = 0;
-        if ($act->getId()!=''){                    
-            $query = "select count(*) as nb from `ACTIVITE` where `idA`=?";
+        if ($adm->getId()!=''){                    
+            $query = "select count(*) as nb from `ADMIN` where `idAdm`=?";
             $traitement = $this->db->prepare($query);
-            $param1 = $act->getId();
+            $param1 = $adm->getId();
             $traitement->bindparam(1,$param1);
             $traitement->execute();
             $ligne = $traitement->fetch();
             $nbRows=$ligne[0];
         }if ($nbRows > 0){
-            $query = "delete from `ACTIVITE` where `idA`=?";
+            $query = "delete from `ADMIN` where `idAdm`=?";
             $traitement = $this->db->prepare($query);
-            $param1 = $act->getId();
+            $param1 = $adm->getId();
             $traitement->bindparam(1,$param1);
             $traitement->execute();            
             return true;
@@ -72,23 +82,23 @@ class Activite {
     }
     
     public function getList($restriction='WHERE 1'){
-        $query = "select * from `ACTIVITE` ".$restriction."";
-        $actList = Array();
+        $query = "select * from `ADMIN` ".$restriction."";
+        $admList = Array();
         try{
             $result = $this->db->Query($query);
         }catch(PDOException $e){
             die ("Erreur : ".$e->getMessage());
         }
         while ($row = $result->fetch()){
-            $activite = new Activite($row['nomA']);
-            $activite->setId($row['idA']);
-            $actList[] = $activite;
+            $admin = new Admin($row['pseudo'],$row['mdpAdm'],$row['mailMdp']);
+            $admin->setId($row['idAdm']);
+            $admList[] = $admin;
         }
-        return $actList;   
+        return $admList;   
     }
     
     public function get($id){
-        $query = "select * from `ACTIVITE` WHERE `idA`=?";
+        $query = "select * from `ADMIN` WHERE `idAdm`=?";
         try{
             $traitement = $this->db->prepare($query);
             $traitement->bindparam(1,$id);
@@ -97,8 +107,8 @@ class Activite {
             die ("Erreur : ".$e->getMessage());
         }
         $row = $traitement->fetch();
-        $activite = new Activite($row['nomA']);
-        $activite->setId($row['idA']);
-        return $activite;    
+        $admin = new Admin($row['pseudo'],$row['mdpAdm'],$row['mailAdm']);
+        $admin->setId($row['idAdm']);
+        return $admin;    
     }
 }

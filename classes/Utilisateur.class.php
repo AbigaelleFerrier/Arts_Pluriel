@@ -7,19 +7,20 @@
 		private $prenomU;
 		private $mailU;
 		private $telU;
-		private $adresseU;
 		private $villeU;
 		private $distanceU;
 		private $mdpU;
                 private $ddnU;
                 private $bioU;
+                private $LAT;
+                private $LONG;
 
 		private $TabSousActivite = array();
 		private $TabActivite 	 = array();
 
 
 		/* CONTRUC */
-		public function __construct ($idU, $pseudoU, $nomU, $prenomU, $mailU, $telU, $adresseU, $villeU, $distanceU, $mdpU, $ddnU,$bioU, $TabSousActivite, $TabActivite)
+		public function __construct ($idU, $pseudoU, $nomU, $prenomU, $mailU, $telU, $villeU, $distanceU, $mdpU, $ddnU,$bioU,$LAT,$LONG, $TabSousActivite, $TabActivite)
 		{
 			$this->idU			= $idU;
 			$this->pseudoU			= $pseudoU;
@@ -27,14 +28,15 @@
 			$this->prenomU			= $prenomU;
 			$this->mailU			= $mailU;
 			$this->telU			= $telU;
-			$this->adresseU			= $adresseU;
 			$this->villeU			= $villeU;
 			$this->distanceU		= $distanceU;
 			$this->mdpU 			= $mdpU;
 			$this->ddnU 			= $ddnU;
                         $this->bioU                     = $bioU;
+                        $this->LAT                      = $LAT;
+                        $this->LONG                     = $LONG;
 
-			$this->TabSousActivite	= $TabSousActivite;
+			$this->TabSousActivite          = $TabSousActivite;
 			$this->TabActivite		= $TabActivite;
 		}
 
