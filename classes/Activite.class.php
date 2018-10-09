@@ -22,18 +22,18 @@ class Activite {
         $this-> nomA = $nomA;
     }
     
-    public function __get($prop){
-        if (property_exists($this, $prop)){
-            return $this->$prop;
-        }
-    }
     
-    public function __set($prop, $val) {
-        if(property_exists($this, $prop)){
-            $this->$prop = $val;
-        }
-    }
-    
+    function getId() { return $this->idA; }
+    function getNom() { return $this->nomA; }
+
+    function getLieux() { return $this->Lieux; }
+
+    function setIdA($idA) { $this->idA = $idA; }
+    function setNomA($nomA) { $this->nomA = $nomA; }
+
+    function setLieux($Lieux) { $this->Lieux = $Lieux; }
+
+        
     public function addLieuxActivite($Lieux){
         if (!(isset($this->Lieux[$Lieux->id]))){
             array_push($this->Lieux,$Lieux);

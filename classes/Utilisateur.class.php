@@ -42,19 +42,41 @@
 
 
 		/* SETER GETER */
-		public function __get ($property) {
-			if (property_exists($this, $property)) {
-				return $this->$property;
-			}
-		}
+		function getId() { return $this->idU; }
+                function getPseudo() { return $this->pseudoU; }
+                function getNom() { return $this->nomU; }
+                function getPrenom() { return $this->prenomU; }
+                function getMail() { return $this->mailU; }
+                function getTel() { return $this->telU; }
+                function getVille() { return $this->villeU; }
+                function getDistance() { return $this->distanceU; }
+                function getMdp() { return $this->mdpU; }
+                function getDdn() { return $this->ddnU; }
+                function getBio() { return $this->bioU; }
+                function getLat() { return $this->LAT; }
+                function getLong() { return $this->LONG; }
 
-		public function __set($property, $value) {
-			if (property_exists($this, $property)) {
-				$this->$property = $value;
-			}
-		}
+                function getTabSousActivite() { return $this->TabSousActivite; }
+                function getTabActivite() { return $this->TabActivite; }
 
+                function setIdU($idU) { $this->idU = $idU; }
+                function setPseudoU($pseudoU) { $this->pseudoU = $pseudoU; }
+                function setNomU($nomU) { $this->nomU = $nomU; }
+                function setPrenomU($prenomU) { $this->prenomU = $prenomU; }
+                function setMailU($mailU) { $this->mailU = $mailU; }
+                function setTelU($telU) { $this->telU = $telU; }
+                function setVilleU($villeU) { $this->villeU = $villeU; }
+                function setDistanceU($distanceU) { $this->distanceU = $distanceU; }
+                function setMdpU($mdpU) { $this->mdpU = $mdpU; }
+                function setDdnU($ddnU) { $this->ddnU = $ddnU; }
+                function setBioU($bioU) { $this->bioU = $bioU; }
+                function setLAT($LAT) { $this->LAT = $LAT; }
+                function setLONG($LONG) { $this->LONG = $LONG; }
 
+                function setTabSousActivite($TabSousActivite) { $this->TabSousActivite = $TabSousActivite; }
+                function setTabActivite($TabActivite) { $this->TabActivite = $TabActivite; }
+
+                
 		/* METHODE */
 		public function addTabSousActivite($addSousActivite) {
 			$this->TabSousActivite->append($addSousActivite);

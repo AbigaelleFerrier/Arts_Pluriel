@@ -23,15 +23,13 @@ class SousActivite {
         $this-> specialite = $specialite;
     }
     
-    public function __get($prop){
-        if (property_exists($this, $prop)){
-            return $this->$prop;
-        }
-    }
-    
-    public function __set($prop, $val) {
-        if(property_exists($this, $prop)){
-            $this->$prop = $val;
-        }
-    }
+    function getId() { return $this->idP; }
+    function getSpecialite() { return $this->specialite; }
+    function getIda() { return $this->Activite; }
+
+    function setIdP($idP) { $this->idP = $idP; }
+    function setSpecialite($specialite) { $this->specialite = $specialite; }
+    function setActivite($Activite) { $this->Activite = $Activite; }
+
+
 }

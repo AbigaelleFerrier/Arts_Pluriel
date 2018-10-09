@@ -17,18 +17,17 @@
 
 
 		/* SETER GETER */
-		public function __get ($property) {
-			if (property_exists($this, $property)) {
-				return $this->$property;
-			}
-		}
+		function getId() { return $this->idAdm; }
+                function getPseudo() { return $this->pseudo; }
+                function getMdp() { return $this->mdpAdm; }
+                function getMail() { return $this->mailAdm; }
 
-		public function __set($property, $value) {
-			if (property_exists($this, $property)) {
-				$this->$property = $value;
-			}
-		}
+                function setIdAdm($idAdm) { $this->idAdm = $idAdm; }
+                function setPseudo($pseudo) { $this->pseudo = $pseudo; }
+                function setMdpAdm($mdpAdm) { $this->mdpAdm = $mdpAdm; }
+                function setMailAdm($mailAdm) { $this->mailAdm = $mailAdm; }
 
+                
 		/* METHODE */
 		public function passwordVerif($mailAVerif, $mdpAVerif) {
 			if ($mailAVerif === $this->mailAdm && $mdpAVerif === $this->mdpAdm) {

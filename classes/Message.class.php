@@ -18,15 +18,15 @@
 
 
 		/* SETER GETER */
-		public function __get ($property) {
-			if (property_exists($this, $property)) {
-				return $this->$property;
-			}
-		}
+		function getId() { return $this->idM; }
+                function getText() { return $this->textM; }
+                function getIdRecois() { return $this->recu; }
+                function getIdEnvoie() { return $this->envoyer; }
 
-		public function __set($property, $value) {
-			if (property_exists($this, $property)) {
-				$this->$property = $value;
-			}
-		}
+                function setIdM($idM) { $this->idM = $idM; }
+                function setTextM($textM) { $this->textM = $textM; }
+                function setRecu($recu) { $this->recu = $recu; }
+                function setEnvoyer($envoyer) { $this->envoyer = $envoyer; }
+
+
 	}

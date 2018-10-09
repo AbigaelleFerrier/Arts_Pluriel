@@ -27,15 +27,17 @@ class Lieux {
         $this-> adresseL = $adresseL;
     }
     
-    public function __get($prop){
-        if (property_exists($this, $prop)){
-            return $this->$prop;
-        }
-    }
-    
-    public function __set($prop, $val) {
-        if(property_exists($this, $prop)){
-            $this->$prop = $val;
-        }
-    }
+    function getId() { return $this->idL; }
+    function getLabel() { return $this->labelL; }
+    function getTel() { return $this->telL; }
+    function getVille() { return $this->villeL; }
+    function getAdresse() { return $this->adresseL; }
+
+    function setIdL($idL) { $this->idL = $idL; }
+    function setLabelL($labelL) { $this->labelL = $labelL; }
+    function setTelL($telL) { $this->telL = $telL; }
+    function setVilleL($villeL) { $this->villeL = $villeL; }
+    function setAdresseL($adresseL) { $this->adresseL = $adresseL; }
+
+
 }
