@@ -91,7 +91,8 @@ footer.page-footer {
 /* HOME */
 
 .homeFond {
-  background: rgba(38, 166, 154, 0.40);
+  background: rgba(255, 255, 255, 0.70);
+  color: #000;
 }
 
 .fadeIn {
