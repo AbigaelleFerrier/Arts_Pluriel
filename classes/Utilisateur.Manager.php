@@ -32,7 +32,7 @@ class UtilisateurManager {
             $nbRows=$ligne[0];
         }
         if ($nbRows > 0){ 
-            $query = "update `UTILISATEUR` set `pseudoU`=?, `nomU`=?, `prenomU`=?,`mailU`=?, `telU`=?, `villeU`=?, `distanceU`=?, `mdpU`=?,`ddnU`=?, `bioU`=?,`LAT`, `LONG` where `idU`=?";
+            $query = "update `UTILISATEUR` set `pseudoU`=?, `nomU`=?, `prenomU`=?,`mailU`=?, `telU`=?, `villeU`=?, `distanceU`=?, `mdpU`=?,`ddnU`=?, `bioU`=?,`LAT`=?, `LONG`=? where `idU`=?";
             $traitement = $this->db->prepare($query);
             $param1=$user->getPseudo();
             $traitement->bindparam(1,$param1);
@@ -120,16 +120,18 @@ class UtilisateurManager {
         $userList = Array();
         try{
             $result = $this->db->Query($query);
+            while ($row = $result->fetch()){
+                $utilisateur = new Utilisateur($row['idU'],$row['pseudoU'],$row['nomU'],$row['prenomU'],$row['mailU'],$row['telU'],$row['villeU'],
+                    $row['distanceU'],$row['mdpU'],$row['ddnU'],$row['bioU'],$row['LAT'],$row['LONG']);
+                $utilisateur->setId($row['idU']);
+                $userList[] = $utilisateur;
+            }
+            return $userList;
         }catch(PDOException $e){
             die ("Erreur : ".$e->getMessage());
         }
-        while ($row = $result->fetch()){
-            $utilisateur = new Utilisateur($row['pseudoU'],$row['nomU'],$row['prenomU'],$row['mailU'],$row['telU'],$row['villeU'],
-                    $row['distanceU'],$row['mdpU'],$row['ddnU'],$row['bioU'],$row['LAT'],$row['LONG']);
-            $utilisateur->setId($row['idU']);
-            $userList[] = $utilisateur;
-        }
-        return $userList;   
+        
+           
     }
     
     public function get($id){
@@ -142,7 +144,7 @@ class UtilisateurManager {
             die ("Erreur : ".$e->getMessage());
         }
         $row = $traitement->fetch();
-        $utilisateur = new Utilisateur($row['pseudoU'],$row['nomU'],$row['prenomU'],$row['mailU'],$row['telU'],$row['villeU'],
+        $utilisateur = new Utilisateur($row['idU'],$row['pseudoU'],$row['nomU'],$row['prenomU'],$row['mailU'],$row['telU'],$row['villeU'],
                     $row['distanceU'],$row['mdpU'],$row['ddnU'],$row['bioU'],$row['LAT'],$row['LONG']);
         $utilisateur->setId($row['idU']);
         return $utilisateur;    

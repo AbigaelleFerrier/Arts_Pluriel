@@ -20,8 +20,9 @@
 
 
 		/* CONTRUC */
-		public function __construct ($pseudoU, $nomU, $prenomU, $mailU, $telU, $villeU, $distanceU, $mdpU, $ddnU,$bioU,$LAT,$LONG, $TabSousActivite, $TabActivite)
+		public function __construct ($id,$pseudoU, $nomU, $prenomU, $mailU, $telU, $villeU, $distanceU, $mdpU, $ddnU,$bioU,$LAT,$LONG)
 		{
+                    $this->idU = $id;
 			$this->pseudoU			= $pseudoU;
 			$this->nomU			= $nomU;
 			$this->prenomU			= $prenomU;
@@ -35,8 +36,6 @@
                         $this->LAT                      = $LAT;
                         $this->LONG                     = $LONG;
 
-			$this->TabSousActivite          = $TabSousActivite;
-			$this->TabActivite		= $TabActivite;
 		}
 
 
