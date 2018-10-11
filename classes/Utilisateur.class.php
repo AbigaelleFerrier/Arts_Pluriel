@@ -10,10 +10,10 @@
 		private $villeU;
 		private $distanceU;
 		private $mdpU;
-                private $ddnU;
-                private $bioU;
-                private $LAT;
-                private $LONG;
+		private $ddnU;
+		private $bioU;
+		private $LAT;
+		private $LONG;
 
 		private $TabSousActivite = array();
 		private $TabActivite 	 = array();
@@ -24,18 +24,23 @@
 		{
                     $this->idU = $id;
 			$this->pseudoU			= $pseudoU;
-			$this->nomU			= $nomU;
+			$this->nomU				= $nomU;
 			$this->prenomU			= $prenomU;
 			$this->mailU			= $mailU;
-			$this->telU			= $telU;
+			$this->telU				= $telU;
 			$this->villeU			= $villeU;
 			$this->distanceU		= $distanceU;
 			$this->mdpU 			= $mdpU;
 			$this->ddnU 			= $ddnU;
-                        $this->bioU                     = $bioU;
-                        $this->LAT                      = $LAT;
-                        $this->LONG                     = $LONG;
+            $this->bioU				= $bioU;
+            $this->LAT				= $LAT;
+            $this->LONG				= $LONG;
 
+<<<<<<< HEAD
+=======
+			$this->TabSousActivite	= $TabSousActivite;
+			$this->TabActivite		= $TabActivite;
+>>>>>>> 814756bf35bc320900468eeb2e2cca955c814b69
 		}
 
 
