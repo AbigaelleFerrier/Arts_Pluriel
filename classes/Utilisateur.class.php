@@ -32,15 +32,11 @@
 			$this->distanceU		= $distanceU;
 			$this->mdpU 			= $mdpU;
 			$this->ddnU 			= $ddnU;
-            $this->bioU				= $bioU;
-            $this->LAT				= $LAT;
-            $this->LONG				= $LONG;
-
-<<<<<<< HEAD
-=======
+                        $this->bioU				= $bioU;
+                        $this->LAT				= $LAT;
+                        $this->LONG				= $LONG;
 			$this->TabSousActivite	= $TabSousActivite;
 			$this->TabActivite		= $TabActivite;
->>>>>>> 814756bf35bc320900468eeb2e2cca955c814b69
 		}
 
 
