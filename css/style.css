@@ -119,7 +119,7 @@ footer.page-footer {
 
 #containerFormConnextion {
   padding: 5em;
-  background: url("https://picsum.photos/g/1920/1080/?random");
+  background: url("https://picsum.photos/g/1920/1080/?random&blur");
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
