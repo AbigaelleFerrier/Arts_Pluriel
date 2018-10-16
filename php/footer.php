@@ -32,7 +32,7 @@
 
     <div class="footer-copyright">
         <div class="container">
-            Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+            Design : Ferrier Cirill // Développement : Swart Wendeline</a>
         </div>
     </div>
 </footer>

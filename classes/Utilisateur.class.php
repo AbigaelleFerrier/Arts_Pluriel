@@ -22,7 +22,7 @@
 		/* CONTRUC */
 		public function __construct ($id,$pseudoU, $nomU, $prenomU, $mailU, $telU, $villeU, $distanceU, $mdpU, $ddnU,$bioU,$LAT,$LONG)
 		{
-                    $this->idU = $id;
+			$this->idU 				= $id;
 			$this->pseudoU			= $pseudoU;
 			$this->nomU				= $nomU;
 			$this->prenomU			= $prenomU;
@@ -32,48 +32,48 @@
 			$this->distanceU		= $distanceU;
 			$this->mdpU 			= $mdpU;
 			$this->ddnU 			= $ddnU;
-                        $this->bioU				= $bioU;
-                        $this->LAT				= $LAT;
-                        $this->LONG				= $LONG;
+            $this->bioU				= $bioU;
+            $this->LAT				= $LAT;
+            $this->LONG				= $LONG;
 			$this->TabSousActivite	= $TabSousActivite;
 			$this->TabActivite		= $TabActivite;
 		}
 
 
-		/* SETER GETER */
+		/* SETTER GETTER */
 		function getId() { return $this->idU; }
-                function getPseudo() { return $this->pseudoU; }
-                function getNom() { return $this->nomU; }
-                function getPrenom() { return $this->prenomU; }
-                function getMail() { return $this->mailU; }
-                function getTel() { return $this->telU; }
-                function getVille() { return $this->villeU; }
-                function getDistance() { return $this->distanceU; }
-                function getMdp() { return $this->mdpU; }
-                function getDdn() { return $this->ddnU; }
-                function getBio() { return $this->bioU; }
-                function getLat() { return $this->LAT; }
-                function getLong() { return $this->LONG; }
+        function getPseudo() 	{ return $this->pseudoU; 	}
+        function getNom() 		{ return $this->nomU; 		}
+        function getPrenom() 	{ return $this->prenomU; 	}
+        function getMail() 		{ return $this->mailU; 		}
+        function getTel() 		{ return $this->telU; 		}
+        function getVille() 	{ return $this->villeU; 	}
+        function getDistance() 	{ return $this->distanceU; 	}
+        function getMdp() 		{ return $this->mdpU; 		}
+        function getDdn() 		{ return $this->ddnU; 		}
+        function getBio() 		{ return $this->bioU; 		}
+        function getLat() 		{ return $this->LAT; 		}
+        function getLong() 		{ return $this->LONG; 		}
 
-                function getTabSousActivite() { return $this->TabSousActivite; }
-                function getTabActivite() { return $this->TabActivite; }
+        function getTabSousActivite() { return $this->TabSousActivite; }
+        function getTabActivite() { return $this->TabActivite; }
 
-                function setId($idU) { $this->idU = $idU; }
-                function setPseudo($pseudoU) { $this->pseudoU = $pseudoU; }
-                function setNom($nomU) { $this->nomU = $nomU; }
-                function setPrenom($prenomU) { $this->prenomU = $prenomU; }
-                function setMail($mailU) { $this->mailU = $mailU; }
-                function setTel($telU) { $this->telU = $telU; }
-                function setVille($villeU) { $this->villeU = $villeU; }
-                function setDistance($distanceU) { $this->distanceU = $distanceU; }
-                function setMdp($mdpU) { $this->mdpU = $mdpU; }
-                function setDdn($ddnU) { $this->ddnU = $ddnU; }
-                function setBio($bioU) { $this->bioU = $bioU; }
-                function setLat($LAT) { $this->LAT = $LAT; }
-                function setLong($LONG) { $this->LONG = $LONG; }
+        function setId($idU) 			{ $this->idU 		= $idU; }
+        function setPseudo($pseudoU) 	{ $this->pseudoU 	= $pseudoU; }
+        function setNom($nomU) 			{ $this->nomU 		= $nomU; }
+        function setPrenom($prenomU) 	{ $this->prenomU	= $prenomU; }
+        function setMail($mailU) 		{ $this->mailU 		= $mailU; }
+        function setTel($telU) 			{ $this->telU 		= $telU; }
+        function setVille($villeU)		{ $this->villeU 	= $villeU; }
+        function setDistance($distanceU){ $this->distanceU 	= $distanceU; }
+        function setMdp($mdpU) 			{ $this->mdpU 		= $mdpU; }
+        function setDdn($ddnU) 			{ $this->ddnU 		= $ddnU; }
+        function setBio($bioU) 			{ $this->bioU 		= $bioU; }
+        function setLat($LAT) 			{ $this->LAT 		= $LAT; }
+        function setLong($LONG) 		{ $this->LONG 		= $LONG; }
 
-                function setTabSousActivite($TabSousActivite) { $this->TabSousActivite = $TabSousActivite; }
-                function setTabActivite($TabActivite) { $this->TabActivite = $TabActivite; }
+        function setTabSousActivite($TabSousActivite) 	{ $this->TabSousActivite = $TabSousActivite; }
+        function setTabActivite($TabActivite) 			{ $this->TabActivite 	 = $TabActivite;	 }
 
                 
 		/* METHODE */
@@ -93,4 +93,14 @@
 				return false;
 			}
 		}
+
+
+		public function getUtilisateursProches(){
+			$tabUsers = new array();
+
+			$manager = new UtilisateurManager(database::getDB());
+			$allUsers = $manager->getList("WHERE idU<>". $this->idU);
+			var_dump($allUsers);
+		}
+
 	}

@@ -1,16 +1,5 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of Utilisateur
- *
- * @author etudiant
- */
 require_once("database.class.php");
 
 class UtilisateurManager {
@@ -20,7 +9,8 @@ class UtilisateurManager {
     public function __construct($database){
         $this->db=$database;
     }
-    public function save(Utilisateur $user){        
+
+    public function save(Utilisateur $user){
         $nbRows = 0;
         if ($user->getId()!=''){
             $query = "select count(*) as nb from `UTILISATEUR` where `idU`=?";
@@ -130,8 +120,6 @@ class UtilisateurManager {
         }catch(PDOException $e){
             die ("Erreur : ".$e->getMessage());
         }
-        
-           
     }
     
     public function get($id){
