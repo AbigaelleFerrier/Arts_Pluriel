@@ -15,7 +15,6 @@
 		private $LAT;
 		private $LONG;
 
-		private $TabSousActivite = array();
 		private $TabActivite 	 = array();
 
 
@@ -35,7 +34,6 @@
             $this->bioU				= $bioU;
             $this->LAT				= $LAT;
             $this->LONG				= $LONG;
-			$this->TabSousActivite	= $TabSousActivite;
 			$this->TabActivite		= $TabActivite;
 		}
 
@@ -55,7 +53,6 @@
         function getLat() 		{ return $this->LAT; 		}
         function getLong() 		{ return $this->LONG; 		}
 
-        function getTabSousActivite() { return $this->TabSousActivite; }
         function getTabActivite() { return $this->TabActivite; }
 
         function setId($idU) 			{ $this->idU 		= $idU; }
@@ -72,15 +69,10 @@
         function setLat($LAT) 			{ $this->LAT 		= $LAT; }
         function setLong($LONG) 		{ $this->LONG 		= $LONG; }
 
-        function setTabSousActivite($TabSousActivite) 	{ $this->TabSousActivite = $TabSousActivite; }
         function setTabActivite($TabActivite) 			{ $this->TabActivite 	 = $TabActivite;	 }
 
                 
 		/* METHODE */
-		public function addTabSousActivite($addSousActivite) {
-			$this->TabSousActivite->append($addSousActivite);
-		}
-
 		public function addTabActivite($addActivite) {
 			$this->TabActivite->append($addActivite);
 		}
