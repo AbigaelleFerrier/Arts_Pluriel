@@ -10,7 +10,7 @@
 
     <div id="containerFormConnextion" class="">
     	<div class="row">
-    		<form class="col offset-s1 s10 offset-l7 l5 fondForm z-depth-4">
+            <form action="VerifConnexion.php" method="post" class="col offset-s1 s10 offset-l7 l5 fondForm z-depth-4">
     			<h1 class="noMarge">Se connecter</h1>
 			    
 			    <div class="row">
