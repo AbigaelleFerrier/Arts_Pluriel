@@ -13,7 +13,8 @@
                 <?php
                     $connexion = database::getDB();
                     $idU = $_SESSION['noUser'];
-                    $req = UtilisateurManager::get($idU);
+                    $UM = new UtilisateurManager();
+                    $req = $UM.get($idU);
                     $traitement = $connexion ->prepare($req);
                     $traitement -> execute();
                     $row = $traitement->fetch();
@@ -28,7 +29,7 @@
                 </fieldset>
             
                 <?php
-                    UtilisateurManager::getActivite($idU);
+                    $UM.getActivite($idU);
                 ?>
             </p>
 
