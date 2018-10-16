@@ -14,8 +14,6 @@ include 'Lieux.Manager.php';
     include 'Lieux.class.php';
 include 'Message.Manager.php';
     include 'Message.class.php';
-include 'SousActivite.Manager.php';
-    include 'SousActivite.class.php';
 include 'Utilisateur.Manager.php';
     include 'Utilisateur.class.php';
     require_once 'database.class.php';
