@@ -95,12 +95,12 @@
 		}
 
 
-		public function getUtilisateursProches(){
-			$tabUsers = new array();
-
-			$manager = new UtilisateurManager(database::getDB());
-			$allUsers = $manager->getList("WHERE idU<>". $this->idU);
-			var_dump($allUsers);
-		}
+//		public function getUtilisateursProches(){
+//			$tabUsers = new array();
+//
+//			$manager = new UtilisateurManager(database::getDB());
+//			$allUsers = $manager->getList("WHERE idU<>". $this->idU);
+//			var_dump($allUsers);
+//		}
 
 	}

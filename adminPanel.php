@@ -7,7 +7,7 @@
 <body>
 
     <?php include 'php/nav.php'; ?>
-    <p> VOUS ETES CONNECTE(S) </p>
+    <p> Bienvenue cher Admin </p>
    
 
     <?php
