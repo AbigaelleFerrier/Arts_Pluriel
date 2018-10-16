@@ -15,7 +15,8 @@ try {
         $_SESSION['noUser']=$ligne['idU'];
         $_SESSION['access']="limited";
         header('location:profil.php');
-    } else {
+    } 
+    else {
         $req2 ="select * from ADMIN where mailAdm=:m and mdpAdm=MD5(:p);";
         $traitement2 = $connexion->prepare($req2);
         $traitement2->bindparam(':m',$_POST['email']);
@@ -26,9 +27,11 @@ try {
             $_SESSION['access']="ok";
             header('location:adminPanel.php');
         }
-        //aucun résultat pour le couple login/mdp saisi
-        $_SESSION['access']="denied";
-        header('location:Connexion.php');    
+        else{
+            //aucun résultat pour le couple login/mdp saisi
+            $_SESSION['access']="denied";
+            header('location:Connexion.php');
+        }
     }
 }
 catch (PDOException $e){
