@@ -35,8 +35,8 @@
             $this->bioU				= $bioU;
             $this->LAT				= $LAT;
             $this->LONG				= $LONG;
-			$this->TabSousActivite	= $TabSousActivite;
-			$this->TabActivite		= $TabActivite;
+			//$this->TabSousActivite	= $TabSousActivite;
+			//$this->TabActivite		= $TabActivite;
 		}
 
 
@@ -96,11 +96,34 @@
 
 
 		public function getUtilisateursProches(){
-			$tabUsers = new array();
+			$tabUsers = array();
 
 			$manager = new UtilisateurManager(database::getDB());
 			$allUsers = $manager->getList("WHERE idU<>". $this->idU);
-			var_dump($allUsers);
+			
+			foreach ($allUsers as $key => $value) {
+				$meter = $this->distance($this->LAT, $this->LONG, $value->getLat(), $value->getLong());
+				
+				if ($this->distanceU >= $meter) {
+					$tabUsers[] = $value;
+				}
+			}
+			var_dump($tabUsers);
 		}
+
+		private function distance($lat1, $lng1, $lat2, $lng2) {
+	        $earth_radius = 6378137;   // Terre = sphère de 6378km de rayon
+	        $rlo1 = deg2rad($lng1);
+	        $rla1 = deg2rad($lat1);
+	        $rlo2 = deg2rad($lng2);
+	        $rla2 = deg2rad($lat2);
+	        $dlo = ($rlo2 - $rlo1) / 2;
+	        $dla = ($rla2 - $rla1) / 2;
+	        $a = (sin($dla) * sin($dla)) + cos($rla1) * cos($rla2) * (sin($dlo) * sin($dlo));
+	        $d = 2 * atan2(sqrt($a), sqrt(1 - $a));
+	        //
+	        $meter = ($earth_radius * $d);
+	        return $meter/1000;
+    	}
 
 	}
