@@ -1,6 +1,6 @@
 <?php
 	session_start();
-    include 'classes/incluDesClasses.php';
+        require_once 'classes/incluDesClasses.php';
 
     // Manager utilisable partout //
     $manaU = new UtilisateurManager(database::getDB());

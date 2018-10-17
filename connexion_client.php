@@ -16,8 +16,8 @@ try {
             $_SESSION['user']       = "client";
 
         // on mes l'obj client de façon a pouvoir l'utiliser plus tard //
-            $user = $mana->get($ligne['idU']);
-            $user = serialize($user);
+            $userUS = $manaU->get($ligne['idU']);
+            $user = serialize($userUS);
             $_SESSION['objUser']    = $user;
             $_SESSION['access']     = "limited";
         // ---------------------------------------------
