@@ -6,14 +6,14 @@
  * and open the template in the editor.
  */
 
-include 'Activite.Manager.php';
-    include 'Activite.class.php';
-include 'Admin.Manager.php';
-    include 'Admin.class.php';
-include 'Lieux.Manager.php';
-    include 'Lieux.class.php';
-include 'Message.Manager.php';
-    include 'Message.class.php';
-include 'Utilisateur.Manager.php';
-    include 'Utilisateur.class.php';
-    require_once 'database.class.php';
+require_once 'Activite.Manager.php';
+require_once 'Activite.class.php';
+require_once 'Admin.Manager.php';
+require_once 'Admin.class.php';
+require_once 'Lieux.Manager.php';
+require_once 'Lieux.class.php';
+require_once 'Message.Manager.php';
+require_once 'Message.class.php'; 
+require_once 'Utilisateur.Manager.php';
+require_once 'Utilisateur.class.php';
+require_once 'database.class.php';

@@ -3,7 +3,8 @@
     include 'classes/incluDesClasses.php';
 
     // Manager utilisable partout //
-    $mana = new UtilisateurManager(database::getDB());
+    $manaU = new UtilisateurManager(database::getDB());
+    $manaA = new AdminManager(database::getDB());
 
     // Obj Utilisateur //
     if (isset($_SESSION['objUser'])) {
