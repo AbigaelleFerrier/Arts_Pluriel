@@ -22,10 +22,10 @@
                     $ddn = (time() - strtotime($row[9]));
                 ?> 
                 <fieldset>
-                    <text type="text" name="pseudo" value="<?php echo "$row[1]"; ?>"/><br/> 
-                    <text type="text" name="age" value="<?php echo "$ddn"; ?>"/><br/>
-                    <text type="text" name="ville" value="<?php echo "$row[6]"; ?>"/><br/>
-                    <textarea type="text" name="bio" value="<?php echo "$row[10]"; ?>"/><br />
+                    <text       type="text" name="pseudo"   value="<?php echo "$row[1]"; ?>"/><br/> 
+                    <text       type="text" name="age"      value="<?php echo "$ddn"; ?>"/><br/>
+                    <text       type="text" name="ville"    value="<?php echo "$row[6]"; ?>"/><br/>
+                    <textarea   type="text" name="bio"      value="<?php echo "$row[10]"; ?>"/><br />
                 </fieldset>
             
                 <?php
