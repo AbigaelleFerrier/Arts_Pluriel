@@ -15,7 +15,6 @@
 		private $LAT;
 		private $LONG;
 
-		private $TabSousActivite = array();
 		private $TabActivite 	 = array();
 
 
@@ -35,8 +34,12 @@
             $this->bioU				= $bioU;
             $this->LAT				= $LAT;
             $this->LONG				= $LONG;
+<<<<<<< HEAD
 			//$this->TabSousActivite	= $TabSousActivite;
 			//$this->TabActivite		= $TabActivite;
+=======
+			$this->TabActivite		= $TabActivite;
+>>>>>>> c22a7aaf24c460099bfef48669afc54036c3e3fc
 		}
 
 
@@ -55,7 +58,6 @@
         function getLat() 		{ return $this->LAT; 		}
         function getLong() 		{ return $this->LONG; 		}
 
-        function getTabSousActivite() { return $this->TabSousActivite; }
         function getTabActivite() { return $this->TabActivite; }
 
         function setId($idU) 			{ $this->idU 		= $idU; }
@@ -72,15 +74,10 @@
         function setLat($LAT) 			{ $this->LAT 		= $LAT; }
         function setLong($LONG) 		{ $this->LONG 		= $LONG; }
 
-        function setTabSousActivite($TabSousActivite) 	{ $this->TabSousActivite = $TabSousActivite; }
         function setTabActivite($TabActivite) 			{ $this->TabActivite 	 = $TabActivite;	 }
 
                 
 		/* METHODE */
-		public function addTabSousActivite($addSousActivite) {
-			$this->TabSousActivite->append($addSousActivite);
-		}
-
 		public function addTabActivite($addActivite) {
 			$this->TabActivite->append($addActivite);
 		}
@@ -95,6 +92,7 @@
 		}
 
 
+<<<<<<< HEAD
 		public function getUtilisateursProches(){
 			$tabUsers = array();
 
@@ -110,6 +108,15 @@
 			}
 			var_dump($tabUsers);
 		}
+=======
+//		public function getUtilisateursProches(){
+//			$tabUsers = new array();
+//
+//			$manager = new UtilisateurManager(database::getDB());
+//			$allUsers = $manager->getList("WHERE idU<>". $this->idU);
+//			var_dump($allUsers);
+//		}
+>>>>>>> c22a7aaf24c460099bfef48669afc54036c3e3fc
 
 		private function distance($lat1, $lng1, $lat2, $lng2) {
 	        $earth_radius = 6378137;   // Terre = sphère de 6378km de rayon

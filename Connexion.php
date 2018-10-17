@@ -10,18 +10,23 @@
 
     <div id="containerFormConnextion" class="">
     	<div class="row">
-            <form action="VerifConnexion.php" method="post" class="col offset-s1 s10 offset-l7 l5 fondForm z-depth-4">
+            <form action="connexion_client.php" method="post" class="col offset-s1 s10 offset-l7 l5 fondForm z-depth-4">
     			<h1 class="noMarge">Se connecter</h1>
-			    
+			    <?php 
+                                if($_SESSION['access'] == "denied") {
+                                    echo '<div class="col s12 erreur">Mail ou Mot de passe invalide</div>';
+                                }   
+                            ?>
 			    <div class="row">
+                                
 			        <div class="input-field col s12">
-			          	<input id="email" type="email" class="validate">
+			          	<input id="email" type="email" class="validate" name="email">
 			          	<label for="email">Email</label>
 			        </div>
 			    </div>
 			    <div class="row">
 			        <div class="input-field col s12">
-			          	<input id="password" type="password" class="validate">
+			          	<input id="password" type="password" class="validate" name="password">
 			          	<label for="password">Password</label>
 			        </div>
 			    </div>
