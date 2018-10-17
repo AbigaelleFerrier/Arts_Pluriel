@@ -13,7 +13,7 @@
                 <?php
                     $connexion = database::getDB();
                     $idU = $_SESSION['noUser'];
-                    $UM = UtilisateurManager();
+                    $UM = new UtilisateurManager($idU);
                     $req = $UM.get($idU);
                     $traitement = $connexion ->prepare($req);
                     $traitement -> execute();

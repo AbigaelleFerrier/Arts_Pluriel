@@ -13,9 +13,12 @@
             <form action="connexion_client.php" method="post" class="col offset-s1 s10 offset-l7 l5 fondForm z-depth-4">
     			<h1 class="noMarge">Se connecter</h1>
 			    <?php 
-                                if($_SESSION['access'] == "denied") {
-                                    echo '<div class="col s12 erreur">Mail ou Mot de passe invalide</div>';
-                                }   
+                                if (isset($_SESSION['access'])){
+                                   if($_SESSION['access'] == "denied") {
+                                        echo '<div class="col s12 erreur">Mail ou Mot de passe invalide</div>';
+                                    }   
+                                }
+                                 
                             ?>
 			    <div class="row">
                                 
