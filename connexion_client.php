@@ -16,10 +16,10 @@ try {
             $_SESSION['user']       = "client";
         // on mes l'obj client de façon a pouvoir l'utiliser plus tard //
 
-            $userUS = $manaU->get($ligne['idU']);
+            $userUS = $managerU->get($ligne['idU']);
 
-            $user = serialize($userUS);
-            $_SESSION['objUser']    = $user;
+            $userS = serialize($userUS);
+            $_SESSION['objUser']    = $userUS;
             $_SESSION['access']     = "limited";
         // ---------------------------------------------
             header('location:profil.php');
