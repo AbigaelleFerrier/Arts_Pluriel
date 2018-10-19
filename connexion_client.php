@@ -14,11 +14,12 @@ try {
     if ($ligne=$traitement->fetch()) {
         //alors il y a bien 1 résultat
             $_SESSION['user']       = "client";
-
         // on mes l'obj client de façon a pouvoir l'utiliser plus tard //
-            $userUS = $manaU->get($ligne['idU']);
-            $user = serialize($userUS);
-            $_SESSION['objUser']    = $user;
+
+            $userUS = $managerU->get($ligne['idU']);
+
+            $userS = serialize($userUS);
+            $_SESSION['objUser']    = $userUS;
             $_SESSION['access']     = "limited";
         // ---------------------------------------------
             header('location:profil.php');
@@ -29,6 +30,7 @@ try {
         $traitement2->bindparam(':m',$_POST['email']);
         $traitement2->bindparam(':p',$_POST['password']);
         $traitement2->execute();
+        
         if ($ligne=$traitement2->fetch()){
             $_SESSION['user']="admin";
             $_SESSION['access']="ok";
