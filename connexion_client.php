@@ -14,9 +14,10 @@ try {
     if ($ligne=$traitement->fetch()) {
         //alors il y a bien 1 résultat
             $_SESSION['user']       = "client";
+            
         // on mes l'obj client de façon a pouvoir l'utiliser plus tard //
-
-            $userUS = $managerU->get($ligne['idU']);
+            $managerT = new UtilisateurManager(database::getDB());
+            $userUS = $managerT->get($ligne['idU']);
 
             $userS = serialize($userUS);
             $_SESSION['objUser']    = $userUS;
