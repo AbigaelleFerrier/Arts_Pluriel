@@ -13,16 +13,23 @@ try {
 
     if ($ligne=$traitement->fetch()) {
         //alors il y a bien 1 résultat
-            $_SESSION['user']       = "client";
+            $_SESSION['user'] = "client";
         // on mes l'obj client de façon a pouvoir l'utiliser plus tard //
-
-            $userUS = $managerU->get($ligne['idU']);
-
-            $userS = serialize($userUS);
-            $_SESSION['objUser']    = $userUS;
-            $_SESSION['access']     = "limited";
-        // ---------------------------------------------
-            header('location:profil.php');
+            try{
+                $managerT = new UtilisateurManager(database::getDB());
+                var_dump($managerT);
+                var_dump($ligne['idU']);
+                var_dump($managerT->get(intval($ligne['idU'])));
+//                $userUS = $managerT->get(intval($ligne['idU']));
+//             
+//                $userS = serialize($userUS);
+//                $_SESSION['objUser']    = $userUS;
+//                $_SESSION['access']     = "limited";
+//            // ---------------------------------------------
+//                header('location:profil.php');
+            }catch(Exception $e){
+                echo $e;
+            }
     } 
     else {
         $req2 ="select * from ADMIN where mailAdm=:m and mdpAdm=MD5(:p);";
