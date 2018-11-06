@@ -1,6 +1,8 @@
 <?php
 
 require_once("database.class.php");
+require_once("Activite.class.php");
+require_once("Activite.Manager.php");
 
 class UtilisateurManager {
     //put your code here
@@ -135,8 +137,7 @@ class UtilisateurManager {
                                                     $row['mdpU'],$row['ddnU'],
                                                     $row['bioU'],
                                                     $row['LAT'],$row['LONG'],
-                                                    $actList[]
-                                                );
+                                                    $actList );
 
                     $utilisateur->setId($row['idU']);
                     $userList[] = $utilisateur;
@@ -172,7 +173,7 @@ class UtilisateurManager {
             
             while ($rowActiviter = $traitementPratique->fetch()) {
                 $activite = new Activite($rowActiviter['nomA']);
-                $activite->setId($rowActiviter['idA']);
+                $activite -> setId($rowActiviter['idA']);
                 $actList[] = $activite;
             }
         // Creation d'utilisateur
@@ -183,7 +184,7 @@ class UtilisateurManager {
                                             $row['mdpU'],$row['ddnU'],
                                             $row['bioU'],
                                             $row['LAT'],$row['LONG'],
-                                            $actList[]);
+                                            $actList );
 
             $utilisateur->setId($row['idU']);
         return $utilisateur;
