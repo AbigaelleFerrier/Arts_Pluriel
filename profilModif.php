@@ -31,7 +31,9 @@
             
                 <?php
                     $tabAct = $user->getActivite($user->getId());
-                    $last_key = end(array_keys($tabAct));
+                    //$last_key = end(array_keys($tabAct));
+                    $last = end($tabAct);
+                    $last_key = key($last);
                     foreach ($tabAct as $key => $objAct) {
                         echo $objAct->getNom(); ?> 
                             <button class="btn" onclick="deleteActivite($user, $this);" >Supprimer</button>
