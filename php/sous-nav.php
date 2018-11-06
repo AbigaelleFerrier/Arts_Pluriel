@@ -3,7 +3,7 @@
 	if(isset($_SESSION['user'])) {
 
 		echo'<li><a href="modication_profil.php">Mon Compte</a></li>';
-
+                echo '<li><a href="deconnexion.php">Déconnexion</a></li>';
 	}
 	else {
 		echo'<li><a href="connexion.php">Se connecter</a></li>';

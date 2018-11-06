@@ -23,11 +23,11 @@
                         Téléphone : <input name="tel" value="<?php echo $user->getTel(); ?>" /> <br/>
                         Distance maximum : <input name="distance" value="<?php echo $user->getDistance(); ?>" /> <br/>
                         Mot de passe : <input name="mdp" /> <br/>
-                        Bio :  <textarea name="bio"> <?php echo $user->getBio(); ?> </textarea>> 
+                        Bio :  <textarea name="bio"> <?php echo $user->getBio(); ?> </textarea> 
                     </p>
                     
                     
-                    <button class="btn" onclick= <?php $managerU->save($user); ?> >Modifier</button>
+                    <button class="btn" onclick="saveDonnee($user);" >Modifier</button>
             
                 <?php
                     $managerU.getActivite($idU);
