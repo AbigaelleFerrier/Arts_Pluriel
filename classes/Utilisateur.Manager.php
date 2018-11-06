@@ -186,7 +186,8 @@ class UtilisateurManager {
                                             $actList[]);
 
             $utilisateur->setId($row['idU']);
-
+        return $utilisateur;
+    }
 
     
     public function getActivite($id){
