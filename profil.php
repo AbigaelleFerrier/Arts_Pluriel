@@ -11,23 +11,22 @@
         <h1>Profil</h1>
             <p>
                 <?php 
-                    $connexion = database::getDB();
-                    $idU = $_SESSION['noUser'];
-                    $UM = new UtilisateurManager($idU);
-                    $req = $UM.get($idU);
-                    $traitement = $connexion ->prepare($req);
-                    $traitement -> execute();
-                    $row = $traitement->fetch();
                     
-                    $ddn = (time() - strtotime($row[9]));
+                $date = $user->getDdn();
+                    $ddn = (time() - strtotime($date));
+                    var_dump($date);
+                    
+                    $date = 
                 ?> 
-                    <text       type="text" name="pseudo"   value="<?php echo "$row[1]"; ?>"/><br/> 
-                    <text       type="text" name="age"      value="<?php echo "$ddn"; ?>"/><br/>
-                    <text       type="text" name="ville"    value="<?php echo "$row[6]"; ?>"/><br/>
-                    <textarea   type="text" name="bio"      value="<?php echo "$row[10]"; ?>"/><br />
+             <h2> <?php echo $user->getPseudo(); ?> </h2>
+                    <p>  Age :  <?php echo $ddn; ?><br/>
+                        Ville : <?php echo $user->getVille(); ?><br/>
+                        Bio : <?php echo $user->getBio(); ?></p>
+                    
+                    <a class="btn" href="profilModif.php">Modifier vos informations</a>
             
                 <?php
-                    $UM.getActivite($idU);
+                    $managerU.getActivite($idU);
                 ?>
             </p>
 

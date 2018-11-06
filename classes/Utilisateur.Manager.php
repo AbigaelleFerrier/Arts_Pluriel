@@ -122,7 +122,7 @@ class UtilisateurManager {
         }
     }
     
-    public static function get($id){
+    public function get($id){
         $query = "select * from `UTILISATEUR` WHERE `idU`=?";
         try{
             $traitement = $this->db->prepare($query);
@@ -138,7 +138,7 @@ class UtilisateurManager {
         return $utilisateur;    
     }
     
-    public static function getActivite($id){
+    public function getActivite($id){
         $query = "Select `nomA` from `ACTIVITE`, `FAIRE` where ACTIVITE.idA = FAIRE.idA and `idU`=?";
         try{
             $traitement = $this->db->prepare($query);

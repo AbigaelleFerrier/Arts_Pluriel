@@ -16,17 +16,15 @@ try {
             $_SESSION['user'] = "client";
         // on mes l'obj client de façon a pouvoir l'utiliser plus tard //
             try{
-                $managerT = new UtilisateurManager(database::getDB());
-                var_dump($managerT);
-                var_dump($ligne['idU']);
-                var_dump($managerT->get(intval($ligne['idU'])));
-//                $userUS = $managerT->get(intval($ligne['idU']));
-//             
-//                $userS = serialize($userUS);
-//                $_SESSION['objUser']    = $userUS;
-//                $_SESSION['access']     = "limited";
+                
+                $managerU->get($ligne['idU']);
+                $userUS = $managerU->get(intval($ligne['idU']));
+             
+                $userS = serialize($userUS);
+                $_SESSION['objUser']    = $userS;
+                $_SESSION['access']     = "limited";
 //            // ---------------------------------------------
-//                header('location:profil.php');
+                header('location:profil.php');
             }catch(Exception $e){
                 echo $e;
             }
