@@ -22,7 +22,6 @@ class Activite {
         $this-> nomA = $nomA;
     } 
     
-    
     function getId()    { return $this->idA; }
     function getNom()   { return $this->nomA; }
     function getLieux() { return $this->Lieux; }

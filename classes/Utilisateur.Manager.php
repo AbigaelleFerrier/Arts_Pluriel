@@ -160,6 +160,7 @@ class UtilisateurManager {
                 die ("Erreur : ".$e->getMessage());
             }
             $row = $traitement->fetch();
+
         // Activiter
             $query = "select * from `pratique` WHERE `idU`=?";
             try{
@@ -171,10 +172,23 @@ class UtilisateurManager {
                 die ("Erreur : ".$e->getMessage());
             }
             
-            while ($rowActiviter = $traitementPratique->fetch()) {
-                $activite = new Activite($rowActiviter['nomA']);
-                $activite -> setId($rowActiviter['idA']);
-                $actList[] = $activite;
+            while ($rowPratique = $traitementPratique->fetch()) {
+                $query = "select * from `ACTIVITE` WHERE `idA`=?";
+                try{
+                    $traitementActivite = $this->db->prepare($query);
+                    $traitementActivite ->bindparam(1, $rowPratique['idA']);
+                    $traitementActivite ->execute();
+                }
+                catch(PDOException $e){
+                    die ("Erreur : ".$e->getMessage());
+                }
+
+                if ($rowActiviter = $traitementActivite->fetch()) {
+                    $activite = new Activite($rowActiviter['nomA']);
+                    $activite -> setId($rowActiviter['idA']);
+                    $actList[] = $activite;
+                }
+                
             }
         // Creation d'utilisateur
             $utilisateur = new Utilisateur( $row['idU'],$row['pseudoU'],
