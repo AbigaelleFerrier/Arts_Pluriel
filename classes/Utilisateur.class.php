@@ -51,8 +51,8 @@
         function getBio() 		{ return $this->bioU; 		}
         function getLat() 		{ return $this->LAT; 		}
         function getLong() 		{ return $this->LONG; 		}
-
-     
+        function getActivite()          { return $this->TabActivite;    }
+                              
         function setId($idU) 			{ $this->idU 		= $idU; }
         function setPseudo($pseudoU) 	{ $this->pseudoU 	= $pseudoU; }
         function setNom($nomU) 			{ $this->nomU 		= $nomU; }
@@ -66,7 +66,6 @@
         function setBio($bioU) 			{ $this->bioU 		= $bioU; }
         function setLat($LAT) 			{ $this->LAT 		= $LAT; }
         function setLong($LONG) 		{ $this->LONG 		= $LONG; }
-
        
                 
 		/* METHODE */
