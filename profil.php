@@ -11,15 +11,12 @@
         <h1>Profil</h1>
             <p>
                 <?php 
+                    $d = substr($user->getDdn(), 0, 4);              
+                    $d = date('Y') - $d;   
                     
-                $date = $user->getDdn();
-                    $ddn = (time() - strtotime($date));
-                    var_dump($date);
-                    
-                    $date = 
                 ?> 
              <h2> <?php echo $user->getPseudo(); ?> </h2>
-                    <p>  Age :  <?php echo $ddn; ?><br/>
+                    <p>  Age :  <?php echo $d; ?><br/>
                         Ville : <?php echo $user->getVille(); ?><br/>
                         Bio : <?php echo $user->getBio(); ?></p>
                     

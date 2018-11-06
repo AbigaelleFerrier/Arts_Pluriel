@@ -11,14 +11,13 @@
         <h1>Modification du Profil</h1>
             <p>
                 <?php 
+                    $d = substr($user->getDdn(), 0, 4);
+                    $d = date('Y') - $d;   
                     
-                    
-                    $ddn = (time() - strtotime($user->getDdn()));
                 ?> 
                     <h2> <?php echo $user->getPseudo(); ?> </h2>
                     
-                    <form method="post" action="ActProfilModif.php">
-                    <p>  Age :  <?php echo $ddn; ?><br/>
+                    <p>  Age :  <?php echo $d; ?><br/>
                         Ville : <input name="ville" value="<?php echo $user->getVille(); ?>" /><br/>
                         Mail : <input name="mail" value="<?php echo $user->getMail(); ?>" /><br/>
                         Téléphone : <input name="tel" value="<?php echo $user->getTel(); ?>" /> <br/>
@@ -28,7 +27,7 @@
                     </p>
                     
                     
-                    <button class="btn" type="submit">Modifier</button>
+                    <button class="btn" onclick= <?php $managerU->save($user); ?> >Modifier</button>
             
                 <?php
                     $managerU.getActivite($idU);
