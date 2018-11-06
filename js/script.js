@@ -32,3 +32,11 @@ function SearchUser(){ //recherche d'un utilisateur en particulier
 function SearchLieu(){ //recherche d'un lieu en particulier 
     
 }
+
+function deleteActivite($user, $this){ //suppression d'une activité de l'utilisateur
+    
+}
+
+function addActivite(){ //ajouter une activité à l'utilisateur
+    
+}

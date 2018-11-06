@@ -14,6 +14,8 @@
     <a class="btn" href="NewAdmin.php">Créer un nouvel administrateur</a>
     <button class="btn" onclick="SearchUser()"> Rechercher un utilisateur</button>
     <button class="btn" onclick="SearchLieu()">Rechercher un lieu</button>
+    
+    <div name="Liste"></div>
 
     <?php
         include 'php/footer.php';

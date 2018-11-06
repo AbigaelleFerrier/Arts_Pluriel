@@ -30,7 +30,15 @@
                     <button class="btn" onclick="saveDonnee($user);" >Modifier</button>
             
                 <?php
-                    $managerU.getActivite($idU);
+                    $tabAct = $user->getActivite($user->getId());
+                    $last_key = end(array_keys($tabAct));
+                    foreach ($tabAct as $key => $objAct) {
+                        echo $objAct->getNom(); ?> 
+                            <button class="btn" onclick="deleteActivite($user, $this);" >Supprimer</button>
+                        <?php if($key == $last_key){?>
+                            <button class="btn" onclick="addActivite();" >Ajouter</button>    
+                        <?php ; }
+}
                 ?>
             </p>
 
