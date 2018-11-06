@@ -111,10 +111,35 @@ class UtilisateurManager {
         try{
             $result = $this->db->Query($query);
             while ($row = $result->fetch()){
-                $utilisateur = new Utilisateur($row['idU'],$row['pseudoU'],$row['nomU'],$row['prenomU'],$row['mailU'],$row['telU'],$row['villeU'],
-                    $row['distanceU'],$row['mdpU'],$row['ddnU'],$row['bioU'],$row['LAT'],$row['LONG']);
-                $utilisateur->setId($row['idU']);
-                $userList[] = $utilisateur;
+                // Activiter
+                    $query = "select * from `pratique` WHERE `idU`=?";
+                    try{
+                        $traitementPratique = $this->db->prepare($query);
+                        $traitementPratique ->bindparam(1,$row['idU']);
+                        $traitementPratique ->execute();
+                    }
+                    catch(PDOException $e){
+                        die ("Erreur : ".$e->getMessage());
+                    }
+                    
+                    while ($rowActiviter = $traitementPratique->fetch()) {
+                        $activite = new Activite($rowActiviter['nomA']);
+                        $activite->setId($rowActiviter['idA']);
+                        $actList[] = $activite;
+                    }
+                // Creation d'utilisateur  
+                    $utilisateur = new Utilisateur( $row['idU'],$row['pseudoU'],
+                                                    $row['nomU'],$row['prenomU'],
+                                                    $row['mailU'],$row['telU'],
+                                                    $row['villeU'],$row['distanceU'],
+                                                    $row['mdpU'],$row['ddnU'],
+                                                    $row['bioU'],
+                                                    $row['LAT'],$row['LONG'],
+                                                    $actList[]
+                                                );
+
+                    $utilisateur->setId($row['idU']);
+                    $userList[] = $utilisateur;
             }
             return $userList;
         }catch(PDOException $e){
@@ -123,18 +148,44 @@ class UtilisateurManager {
     }
     
     public static function get($id){
-        $query = "select * from `UTILISATEUR` WHERE `idU`=?";
-        try{
-            $traitement = $this->db->prepare($query);
-            $traitement->bindparam(1,$id);
-            $traitement->execute();
-        }catch(PDOException $e){
-            die ("Erreur : ".$e->getMessage());
-        }
-        $row = $traitement->fetch();
-        $utilisateur = new Utilisateur($row['idU'],$row['pseudoU'],$row['nomU'],$row['prenomU'],$row['mailU'],$row['telU'],$row['villeU'],
-                    $row['distanceU'],$row['mdpU'],$row['ddnU'],$row['bioU'],$row['LAT'],$row['LONG']);
-        $utilisateur->setId($row['idU']);
+        // UTILISATEUR
+            $query = "select * from `UTILISATEUR` WHERE `idU`=?";
+            try{
+                $traitement = $this->db->prepare($query);
+                $traitement->bindparam(1,$id);
+                $traitement->execute();
+            }catch(PDOException $e){
+                die ("Erreur : ".$e->getMessage());
+            }
+            $row = $traitement->fetch();
+        // Activiter
+            $query = "select * from `pratique` WHERE `idU`=?";
+            try{
+                $traitementPratique = $this->db->prepare($query);
+                $traitementPratique ->bindparam(1,$id);
+                $traitementPratique ->execute();
+            }
+            catch(PDOException $e){
+                die ("Erreur : ".$e->getMessage());
+            }
+            
+            while ($rowActiviter = $traitementPratique->fetch()) {
+                $activite = new Activite($rowActiviter['nomA']);
+                $activite->setId($rowActiviter['idA']);
+                $actList[] = $activite;
+            }
+        // Creation d'utilisateur
+            $utilisateur = new Utilisateur( $row['idU'],$row['pseudoU'],
+                                            $row['nomU'],$row['prenomU'],
+                                            $row['mailU'],$row['telU'],
+                                            $row['villeU'],$row['distanceU'],
+                                            $row['mdpU'],$row['ddnU'],
+                                            $row['bioU'],
+                                            $row['LAT'],$row['LONG'],
+                                            $actList[]);
+
+            $utilisateur->setId($row['idU']);
+
         return $utilisateur;    
     }
     

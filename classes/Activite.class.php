@@ -20,12 +20,11 @@ class Activite {
     
     public function __construct($nomA){
         $this-> nomA = $nomA;
-    }
+    } 
     
     
-    function getId() { return $this->idA; }
-    function getNom() { return $this->nomA; }
-
+    function getId()    { return $this->idA; }
+    function getNom()   { return $this->nomA; }
     function getLieux() { return $this->Lieux; }
 
     function setId($idA) { $this->idA = $idA; }

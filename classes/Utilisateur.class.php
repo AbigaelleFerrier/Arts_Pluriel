@@ -18,7 +18,7 @@
 		private $TabActivite = array();
 
 		/* CONTRUC */
-		public function __construct ($id,$pseudoU, $nomU, $prenomU, $mailU, $telU, $villeU, $distanceU, $mdpU, $ddnU,$bioU,$LAT,$LONG)
+		public function __construct ($id,$pseudoU, $nomU, $prenomU, $mailU, $telU, $villeU, $distanceU, $mdpU, $ddnU,$bioU,$LAT,$LONG, $TabActivite)
 		{
 			$this->idU 				= $id;
 			$this->pseudoU			= $pseudoU;
@@ -33,12 +33,12 @@
             $this->bioU				= $bioU;
             $this->LAT				= $LAT;
             $this->LONG				= $LONG;
-
+            $this->TabActivite 		= $TabActivite;
 		}
 
 
 		/* SETTER GETTER */
-		function getId() { return $this->idU; }
+		function getId() 		{ return $this->idU; 		}
         function getPseudo() 	{ return $this->pseudoU; 	}
         function getNom() 		{ return $this->nomU; 		}
         function getPrenom() 	{ return $this->prenomU; 	}
