@@ -9,25 +9,31 @@
     <?php include 'php/nav.php'; ?>
     
     <?php    
-        if (isset($_GET['id']) && $_GET['id'] != "") {
-            try{
-                $connexion = database::getDB();
-                $req = "select idU from `UTILISATEUR` WHERE `idU`=?";
-                $traitement = $connexion->prepare($req);
-                $traitement ->bindparam(1, $_GET['id']);
-                $traitement ->execute();
-                if ($traitement->fetch()) {
-                   $userCourant = $managerU->get($_GET['id']);
-                }
-                else {
-                    header("location:index.php");
-                }
-            }
-            catch(PDOException $e){
-                header("location:index.php");
-            }        
+        if ((isset($_GET['id']) && $_GET['id'] != "")) {
+            $idUtilisateur_a_use = $_GET['id'];
+        }
+        else if (isset($_SESSION['user'])) {
+            $idUtilisateur_a_use = $user->getId();
         }
         else {
+            header("location:index.php");
+        }
+
+        try{
+            $connexion = database::getDB();
+            $req = "select idU from `UTILISATEUR` WHERE `idU`=?";
+            $traitement = $connexion->prepare($req);
+            $traitement ->bindparam(1, $idUtilisateur_a_use);
+            $traitement ->execute();
+            
+            if ($traitement->fetch()) {
+               $userCourant = $managerU->get($idUtilisateur_a_use);
+            }
+            else {
+                header("location:index.php");
+            }
+        }
+        catch(PDOException $e){
             header("location:index.php");
         }
     ?>
