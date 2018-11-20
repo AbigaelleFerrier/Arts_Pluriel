@@ -4,6 +4,7 @@
     require_once 'classes/incluDesClasses.php';
     $managerU = new UtilisateurManager(database::getDB());
     $managerA = new AdminManager(database::getDB());
+    $managerL = new LieuxManager(database::getDB());
     
     //var_dump($_SESSION);
 

@@ -117,7 +117,7 @@ class UtilisateurManager {
                     $query = "select * from `pratique` WHERE `idU`=?";
                     try{
                         $traitementPratique = $this->db->prepare($query);
-                        $traitementPratique ->bindparam(1,$id);
+                        $traitementPratique ->bindparam(1,$row['idU']);
                         $traitementPratique ->execute();
                     }
                     catch(PDOException $e){
@@ -139,6 +139,9 @@ class UtilisateurManager {
                             $activite = new Activite($rowActiviter['nomA']);
                             $activite -> setId($rowActiviter['idA']);
                             $actList[] = $activite;
+                        }
+                        else {
+                            $actList = "ERREUR";
                         }
                         
                     }

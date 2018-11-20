@@ -5,9 +5,15 @@
     $managerU = new UtilisateurManager(database::getDB());
     $managerA = new AdminManager(database::getDB());
    
-    $listUsers = $managerU->getList();
-    foreach ($listUsers as $personne){
-        echo $personne->getNom() . "<br>";
-        echo $personne->getPrenom() . "<br>";
+    if (isset($_GET['id']) && $_GET['id'] == -1 ) {
+        $listUsers = $managerU->getList();
+        foreach ($listUsers as $personne){
+            echo $personne->getPseudo() . " | " . $personne->getMail() . "<br>";
+        }
+    }
+    else {
+        $personne = $managerU->get($_GET['id']);
+        
+        echo $personne->getPseudo() . " | " . $personne->getMail() . "<br>";
     }
 ?>

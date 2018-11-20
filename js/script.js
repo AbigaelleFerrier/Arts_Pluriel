@@ -4,9 +4,9 @@ function saveDonnee($user){
     //à coder
 }
 
-function afficheUser(){ //affiche sur le pannel d'administrateur tous les utilisateurs
+function afficheUser(id = -1){ //affiche sur le pannel d'administrateur tous les utilisateurs
     var xhr = new XMLHttpRequest(); 
-        xhr.open("GET", "php/ajax/afficheUsers.php");
+        xhr.open("GET", "php/ajax/afficheUsers.php?id="+ id);
         
         xhr.onreadystatechange = function(){
             if (xhr.readyState == 4 && xhr.status == 200){
@@ -20,8 +20,16 @@ function modifDonnee($admin){
     //à coder
 }
 
-function afficheLieu(){ //affiche sur le pannel d'administrateur tous les lieux
-    //à coder
+function afficheLieu(id = -1){ //affiche sur le pannel d'administrateur tous les lieux
+    var xhr = new XMLHttpRequest(); 
+        xhr.open("GET", "php/ajax/afficheAllLieux.php?id="+ id);
+        
+        xhr.onreadystatechange = function(){
+            if (xhr.readyState == 4 && xhr.status == 200){
+                document.getElementById('Liste').innerHTML = xhr.responseText;
+            }
+        }
+        xhr.send();
 }
 
 function saveLieu($lieu){
@@ -29,11 +37,13 @@ function saveLieu($lieu){
 }
 
 function SearchUser(){ //recherche d'un utilisateur en particulier
-    
+    var idSelected = document.getElementById('pseudo').value;
+    afficheUser(idSelected);
 }
 
 function SearchLieu(){ //recherche d'un lieu en particulier 
-    
+    var idSelected = document.getElementById('lieux').value;
+    afficheLieu(idSelected);
 }
 
 function deleteActivite($user, $this){ //suppression d'une activité de l'utilisateur
