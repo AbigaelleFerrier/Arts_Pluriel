@@ -1,8 +1,3 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 
 function saveDonnee($user){
@@ -10,7 +5,15 @@ function saveDonnee($user){
 }
 
 function afficheUser(){ //affiche sur le pannel d'administrateur tous les utilisateurs
-    //à coder
+    var xhr = new XMLHttpRequest(); 
+        xhr.open("GET", "php/ajax/afficheUsers.php");
+        
+        xhr.onreadystatechange = function(){
+            if (xhr.readyState == 4 && xhr.status == 200){
+                document.getElementById('Liste').innerHTML = xhr.responseText;
+            }
+        }
+        xhr.send();
 }
 
 function modifDonnee($admin){

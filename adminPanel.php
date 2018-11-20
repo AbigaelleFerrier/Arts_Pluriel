@@ -8,6 +8,7 @@
 
     <?php include 'php/nav.php'; ?>
     
+    
     <button class="btn" onclick="afficheUser()" >Afficher tous les utilisateurs</button>
     <button class="btn" onclick="afficheLieu()" >Afficher tous les lieux</button>
     <a class="btn" href="AdminModifInfo.php">Modifier vos informations</a>

@@ -27,7 +27,7 @@
                     </p>
                     
                     
-                    <button class="btn" onclick="saveDonnee($user);" >Modifier</button>
+                    <button class="btn" onclick="<?php $managerU::save($user);?>" >Modifier</button>
             
                 <?php
                     $tabAct = $user->getActivite($user->getId());
