@@ -33,7 +33,7 @@ class AdminManager {
             $nbRows=$ligne[0];
         }
         if ($nbRows > 0){ 
-            $query = "update `ADMIN` set `pseudo`=?, `mdpAdm`=?, `mailAdm`=? where `idAdm`=?";
+            $query = "update `ADMIN` set `pseudo`=?, `mdpAdm`=MD5(?), `mailAdm`=? where `idAdm`=?";
             $traitement = $this->db->prepare($query);
             $param1=$adm->getPseudo();
             $traitement->bindparam(1,$param1);
@@ -45,7 +45,7 @@ class AdminManager {
             $traitement->bindparam(4,$param4);
             $traitement->execute();
         }else{ 
-            $query = "insert into `ADMIN` (`pseudo`, `mdpAdm`, `mailAdm`) values (?,?,?)";
+            $query = "insert into `ADMIN` (`pseudo`, `mdpAdm`, `mailAdm`) values (?,MD5(?),?)";
             $traitement = $this->db->prepare($query);
             $param1=$adm->getPseudo();
             $traitement->bindparam(1,$param1);
