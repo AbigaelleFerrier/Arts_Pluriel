@@ -24,7 +24,7 @@ class UtilisateurManager {
             $nbRows=$ligne[0];
         }
         if ($nbRows > 0){ 
-            $query = "update `UTILISATEUR` set `pseudoU`=?, `nomU`=?, `prenomU`=?,`mailU`=?, `telU`=?, `villeU`=?, `distanceU`=?, `mdpU`=?,`ddnU`=?, `bioU`=?,`LAT`=?, `LONG`=? where `idU`=?";
+            $query = "update `UTILISATEUR` set `pseudoU`=?, `nomU`=?, `prenomU`=?,`mailU`=?, `telU`=?, `villeU`=?, `distanceU`=?, `mdpU`=MD5(?),`ddnU`=?, `bioU`=?,`LAT`=?, `LONG`=? where `idU`=?";
             $traitement = $this->db->prepare($query);
             $param1=$user->getPseudo();
             $traitement->bindparam(1,$param1);
@@ -55,7 +55,7 @@ class UtilisateurManager {
             $traitement->execute();
         }else{ 
             $query = "insert into `UTILISATEUR` (`pseudoU`, `nomU`,`prenomU`,`mailU`, `telU`,`villeU`,`distanceU`, `mdpU`,`ddnU`,`bioU`, `LAT`,`LONG`) "
-                    . "values (?,?,?,?,?,?,?,?,?,?,?,?)";
+                    . "values (?,?,?,?,?,?,?,MD5(?),?,?,?,?)";
             $traitement = $this->db->prepare($query);
             $param1=$user->getPseudo();
             $traitement->bindparam(1,$param1);
@@ -117,7 +117,7 @@ class UtilisateurManager {
                     $query = "select * from `pratique` WHERE `idU`=?";
                     try{
                         $traitementPratique = $this->db->prepare($query);
-                        $traitementPratique ->bindparam(1,$id);
+                        $traitementPratique ->bindparam(1,$row['idU']);
                         $traitementPratique ->execute();
                     }
                     catch(PDOException $e){
@@ -139,6 +139,9 @@ class UtilisateurManager {
                             $activite = new Activite($rowActiviter['nomA']);
                             $activite -> setId($rowActiviter['idA']);
                             $actList[] = $activite;
+                        }
+                        else {
+                            $actList = "ERREUR";
                         }
                         
                     }

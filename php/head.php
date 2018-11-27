@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Portfolio Ferrier Cirill</title>
+  <title>Arts Pluriel</title>
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">

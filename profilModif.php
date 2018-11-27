@@ -75,13 +75,24 @@
                 </form>
                         
                     <button class="btn" onclick="saveDonnee($user);" >Modifier</button>
-                
-                    
-                    
+
             </div>
         </div>
     </div>
-
+                <?php
+                    $tabAct = $user->getActivite($user->getId());
+                    //$last_key = end(array_keys($tabAct));
+                    $last = end($tabAct);
+                    $last_key = key($last);
+                    foreach ($tabAct as $key => $objAct) {
+                        echo $objAct->getNom(); ?> 
+                            <button class="btn" onclick="deleteActivite($user, $this);" >Supprimer</button>
+                        <?php if($key == $last_key){?>
+                            <button class="btn" onclick="addActivite();" >Ajouter</button>    
+                        <?php ; }
+					}
+                ?>
+         
     <?php
         include 'php/footer.php';
         include 'php/script.php';
