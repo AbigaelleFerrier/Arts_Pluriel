@@ -10,15 +10,13 @@
     <div id="profil">
         <div class="container" >
             <div class="row">		
-                <h1>Modification du Profil :</h1>
+                <h1>Modification du Profil : <span class="typoLogo" style="font-size: 3vw"><?php echo $user->getPseudo(); ?></span></h1>
                     
                     <?php 
                         $d = substr($user->getDdn(), 0, 4);
                         $d = date('Y') - $d;   
                         
                     ?>
-
-                    <h2 class="typoLogo"> <?php echo $user->getPseudo(); ?> </h2>
             </div>
             <div class="row">
                 <form>
@@ -53,18 +51,35 @@
                             <select multiple>
                                 <?php
                                     $tabAct = $user->getActivite($user->getId());
-                                    
+									$whereNoIn = "WHERE 1";
+                                   
                                     foreach ($tabAct as $key => $objAct) {
+                                    	/* ----------------------------------------------------------------------------- */
+                                    	// Recup les diff id pour cree un "where" qui ne prend pas les id deja activiver //
+                                    	/* ----------------------------------------------------------------------------- */
+	                                    	if ($key == 0) {
+	                                    		$whereNoIn = "Where ";
+	                                    	}
+
+	                                    	$whereNoIn .= "idA <> ". $objAct->getId() . "  ";
+
+	                                    	if ($key != count($tabAct) -1) {
+	                                    		$whereNoIn .= "And ";
+	                                    	}
+
+                                    	/* ------------ */
                                         echo "<option>";
                                             echo $objAct->getNom(); 
                                         echo "</option >";
                                     }
-
-                                   
-                                           
                                 ?>
                             </select>
-                            <label>Materialize Multiple Select</label>
+                            <label>Activiter</label>
+                            
+                            <?php
+                            	var_dump($whereNoIn);
+                            ?>
+
                         </div>
                         <div class="col s2">
                             <button class="btn" onclick="addActivite();" >Ajouter</button>
@@ -74,24 +89,11 @@
 
                 </form>
                         
-                    <button class="btn" onclick="saveDonnee($user);" >Modifier</button>
+                <button class="btn" onclick="saveDonnee($user);" >Modifier</button>
 
             </div>
         </div>
     </div>
-                <?php
-                    $tabAct = $user->getActivite($user->getId());
-                    //$last_key = end(array_keys($tabAct));
-                    $last = end($tabAct);
-                    $last_key = key($last);
-                    foreach ($tabAct as $key => $objAct) {
-                        echo $objAct->getNom(); ?> 
-                            <button class="btn" onclick="deleteActivite($user, $this);" >Supprimer</button>
-                        <?php if($key == $last_key){?>
-                            <button class="btn" onclick="addActivite();" >Ajouter</button>    
-                        <?php ; }
-					}
-                ?>
          
     <?php
         include 'php/footer.php';
