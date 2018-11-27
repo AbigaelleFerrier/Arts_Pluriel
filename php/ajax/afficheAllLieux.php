@@ -11,7 +11,9 @@
         foreach ($listLieux as $endroit){
             echo $endroit->getLabel() . " | " . $endroit->getVille() . " | " . $endroit->getAdresse() . "<br>";
         }
-    }else {
+    }else if ($_GET['id'] == ""){
+        echo 'Veuillez saisir un nom';
+    }else{
         $endroit = $managerL->get($_GET['id']);
         
         echo $endroit->getLabel() . " | " . $endroit->getVille() . " | " . $endroit->getAdresse() . "<br>";

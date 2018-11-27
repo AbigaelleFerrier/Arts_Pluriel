@@ -20,10 +20,12 @@
 
             <?php
                 if(isset($_SESSION['user'])) {
-                    echo '<li class="tab"><a href="rechercher_un_lieux_activiter.php">Rechercher une personnne</a></li>';
+                    echo '<li class="tab"><a href="rechercher_une_personne.php">Rechercher une personnne</a></li>';
+                    echo '<li class="tab"><a href="forum.php">Forum</a></li>';
                 }
                 else {
-                    echo '<li class="tab"><a href="#!" class="disbled disabledLi tooltipped"  data-position="bottom" data-tooltip="Vous devez être connecter">Rechercher une personnne</a></li>';
+                    echo '<li class="tab"><a href="#!" class="disbled disabledLi tooltipped"  data-position="bottom" data-tooltip="Vous devez être connecté">Rechercher une personnne</a></li>';
+                    echo '<li class="tab"><a href="#!" class="disbled disabledLi tooltipped" data-position="botton" data-tooltip="Vous devez être connecté">Forum</a></li>';
                 }
             ?>
 

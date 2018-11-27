@@ -61,3 +61,27 @@ function SearchLieuByAct(id = -1){ //affiche sur le pannel d'administrateur tous
         }
         xhr.send();
 }
+
+function SearchUserByAct(id = -1){
+    var xhr = new XMLHttpRequest(); 
+        xhr.open("GET", "php/ajax/afficheUserAct.php?id="+ id);
+        
+        xhr.onreadystatechange = function(){
+            if (xhr.readyState == 4 && xhr.status == 200){
+                document.getElementById('Liste').innerHTML = xhr.responseText;
+            }
+        }
+        xhr.send();
+}
+
+function SeachUserByDist(id){
+    var xhr = new XMLHttpRequest(); 
+        xhr.open("GET", "php/ajax/afficheUserDist.php?id="+ id);
+        
+        xhr.onreadystatechange = function(){
+            if (xhr.readyState == 4 && xhr.status == 200){
+                document.getElementById('Liste').innerHTML = xhr.responseText;
+            }
+        }
+        xhr.send();
+}
