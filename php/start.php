@@ -5,6 +5,7 @@
     $managerU = new UtilisateurManager(database::getDB());
     $managerA = new AdminManager(database::getDB());
     $managerL = new LieuxManager(database::getDB());
+    $managerAct = new ActiviteManager(databse::getDB());
     
     //var_dump($_SESSION);
 

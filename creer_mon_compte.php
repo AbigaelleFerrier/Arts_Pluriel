@@ -10,7 +10,7 @@
 
     <div id="containerFormConnextion" class="">
     	<div class="row">
-    		<form class="col offset-s1 s10 offset-l7 l5 fondForm z-depth-4" action="SaveNewUser.php">
+    		<form action="SaveNewUser.php" method="post" class="col offset-s1 s10 offset-l7 l5 fondForm z-depth-4">
     			<h1 class="noMarge">S'inscrire</h1>
     			<div class="row">
 			        <div class="input-field col s10">
@@ -54,7 +54,7 @@
 			    <div class="row">
 			    	<div class="input-field col s6">
 			          	<input id="tel" name="tel" type="text" class="validate">
-			          	<label for="tel">Téléphone (afficher publiquement)</label>
+			          	<label for="tel">Téléphone (non afficher publiquement)</label>
 			        </div>
 			        <div class="input-field col s6">
 			          	<input id="ville" name="ville" type="text" class="validate">

@@ -49,3 +49,15 @@ function deleteActivite($user, $this){ //suppression d'une activité de l'utilis
 function addActivite(){ //ajouter une activité à l'utilisateur
     
 }
+
+function SearchLieuByAct(id = -1){ //affiche sur le pannel d'administrateur tous les lieux
+    var xhr = new XMLHttpRequest(); 
+        xhr.open("GET", "php/ajax/afficheAct.php?id="+ id);
+        
+        xhr.onreadystatechange = function(){
+            if (xhr.readyState == 4 && xhr.status == 200){
+                document.getElementById('Liste').innerHTML = xhr.responseText;
+            }
+        }
+        xhr.send();
+}

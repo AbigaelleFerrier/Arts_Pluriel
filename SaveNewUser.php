@@ -19,11 +19,14 @@
             $tel = $_POST['tel'];
             $ville = $_POST['ville'];
             $distance = $_POST['distance'];
+            if ($password == $passwordV){
+                $newUser = new Utilisateur("",$pseudo,$nom,$prenom,$email,$tel,$ville,$distance,$password,"","","","","");
+                $managerU->save($newUser);
             
-            $newUser = new Utilisateur($pseudo,$nom,$prenom,$email,$tel,$ville,$distance,$password);
-            $managerU->save($newUser);
-            
-            header('location:index.php');
+                header('location:index.php');
+            }else{
+                header('location:creer_mon_compte.php');
+            }
                 
         ?>
 
