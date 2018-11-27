@@ -7,42 +7,80 @@
 <body>
 
     <?php include 'php/nav.php'; ?>
-    			
-        <h1>Modification du Profil</h1>
-            <p>
-                <?php 
-                    $d = substr($user->getDdn(), 0, 4);
-                    $d = date('Y') - $d;   
+    <div id="profil">
+        <div class="container" >
+            <div class="row">		
+                <h1>Modification du Profil :</h1>
                     
-                ?> 
-                    <h2> <?php echo $user->getPseudo(); ?> </h2>
+                    <?php 
+                        $d = substr($user->getDdn(), 0, 4);
+                        $d = date('Y') - $d;   
+                        
+                    ?>
+
+                    <h2 class="typoLogo"> <?php echo $user->getPseudo(); ?> </h2>
+            </div>
+            <div class="row">
+                <form>
+                    <div class="input-field col s6">
+                        <input id="ville" name="ville" type="text"  class="validate"    value="<?php echo $user->getVille(); ?>">
+                        <label for="ville">Ville</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="mail" name="mail" type="text"    class="validate"    value="<?php echo $user->getMail(); ?>" >
+                        <label for="mail">Mail</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="tel" name="tel" type="text"      class="validate"    value="<?php echo $user->getTel(); ?>">
+                        <label for="tel">Téléphone</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="dmr" name="dmr" type="text"      class="validate"    value="<?php echo $user->getDistance(); ?>">
+                        <label for="dmr">Distance maximum de recherche</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="dmr" name="dmr" type="text"      class="validate">
+                        <label for="dmr">Mot de passe</label>
+                    </div>
+
+                    <div class="input-field col s12">
+                        <textarea id="bio" class="materialize-textarea"> <?php echo $user->getBio(); ?></textarea>
+                        <label for="bio">Bio</label>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s10">
+                            <select multiple>
+                                <?php
+                                    $tabAct = $user->getActivite($user->getId());
+                                    
+                                    foreach ($tabAct as $key => $objAct) {
+                                        echo "<option>";
+                                            echo $objAct->getNom(); 
+                                        echo "</option >";
+                                    }
+
+                                   
+                                           
+                                ?>
+                            </select>
+                            <label>Materialize Multiple Select</label>
+                        </div>
+                        <div class="col s2">
+                            <button class="btn" onclick="addActivite();" >Ajouter</button>
+                        </div>
+                    </div>
                     
-                    <p>  Age :  <?php echo $d; ?><br/>
-                        Ville : <input name="ville" value="<?php echo $user->getVille(); ?>" /><br/>
-                        Mail : <input name="mail" value="<?php echo $user->getMail(); ?>" /><br/>
-                        Téléphone : <input name="tel" value="<?php echo $user->getTel(); ?>" /> <br/>
-                        Distance maximum : <input name="distance" value="<?php echo $user->getDistance(); ?>" /> <br/>
-                        Mot de passe : <input name="mdp" /> <br/>
-                        Bio :  <textarea name="bio"> <?php echo $user->getBio(); ?> </textarea> 
-                    </p>
-                    
-                    
+
+                </form>
+                        
                     <button class="btn" onclick="saveDonnee($user);" >Modifier</button>
-            
-                <?php
-                    $tabAct = $user->getActivite($user->getId());
-                    //$last_key = end(array_keys($tabAct));
-                    $last = end($tabAct);
-                    $last_key = key($last);
-                    foreach ($tabAct as $key => $objAct) {
-                        echo $objAct->getNom(); ?> 
-                            <button class="btn" onclick="deleteActivite($user, $this);" >Supprimer</button>
-                        <?php if($key == $last_key){?>
-                            <button class="btn" onclick="addActivite();" >Ajouter</button>    
-                        <?php ; }
-}
-                ?>
-            </p>
+                
+                    
+                    
+            </div>
+        </div>
+    </div>
 
     <?php
         include 'php/footer.php';

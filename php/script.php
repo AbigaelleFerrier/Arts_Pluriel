@@ -32,6 +32,8 @@
     	M.updateTextFields();
   	});
 
+  	
+
 
 	$(document).ready(function() {
 		$('.js-scrollTo').on('click', function() { // Au clic sur un élément

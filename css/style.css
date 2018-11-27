@@ -131,3 +131,21 @@ footer.page-footer {
   padding: 2.5em !important;
   border-radius: 25px;
 }
+
+
+#profil {
+  background: #ececec;
+  padding: 1em 0em;
+}
+
+#profil .typoLogo {
+  font-size: 5vw;
+}
+
+#profil .typoLogo:before {
+  content: "- "
+}
+
+#profil .typoLogo:after {
+  content: " ~"
+}
