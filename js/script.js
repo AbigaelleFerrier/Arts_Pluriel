@@ -32,10 +32,6 @@ function afficheLieu(id = -1){ //affiche sur le pannel d'administrateur tous les
         xhr.send();
 }
 
-function saveLieu($lieu){
-    //à coder
-}
-
 function SearchUser(){ //recherche d'un utilisateur en particulier
     var idSelected = document.getElementById('pseudo').value;
     afficheUser(idSelected);
