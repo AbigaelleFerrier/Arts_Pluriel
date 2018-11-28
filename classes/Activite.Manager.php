@@ -101,4 +101,36 @@ class ActiviteManager {
         $activite->setId($row['idA']);
         return $activite;    
     }
+    
+    public function getListeLieu($id){ //donne la liste des lieux où pratiquer une activité
+        $query = "select st.idL,labelL,telL,adresseL,idA from `se_trouver` st,LIEUX l where st.idL = l.idL and idA=".$id." ";
+        $LieuList = Array();
+        try{
+            $result = $this->db->Query($query);
+        }catch(PDOException $e){
+            die ("Erreur : ".$e->getMessage());
+        }
+        while ($row = $result->fetch()){
+            $lieu = new Lieux($row['labelL'],$row['telL'],"",$row['adresseL']);
+            $lieu->setId($row['idL']);
+            $LieuList[] = $lieu;
+        }
+        return $LieuList; 
+    }
+    
+    public function getListeUser($id){ //donne la liste des utilisateur pratiquant l'activité
+        $query = "select p.idU,pseudoU,	villeU,ddnU,idA from `pratique` p, UTILISATEUR u where p.idU = u.idU and idA=".$id." ";
+        $UserList = Array();
+        try{
+            $result = $this->db->Query($query);
+        }catch(PDOException $e){
+            die ("Erreur : ".$e->getMessage());
+        }
+        while ($row = $result->fetch()){
+            $user = new Utilisateur("",$row['pseudoU'],"","","","",$row['villeU'],"","",$row['ddnU'],"","","","");
+            $user->setId($row['idU']);
+            $UserList[] = $user;
+        }
+        return $UserList; 
+    }
 }

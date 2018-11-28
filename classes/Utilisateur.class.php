@@ -96,7 +96,7 @@
 					$tabUsers[] = $value;
 				}
 			}
-			var_dump($tabUsers);
+			return $tabUsers;
 		}
 
 

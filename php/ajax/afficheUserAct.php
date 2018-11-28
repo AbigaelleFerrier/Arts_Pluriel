@@ -11,8 +11,8 @@
         $listAct = $managerAct->getList();
         foreach ($listAct as $activite){
             echo $activite->getNom()  . "<br>";
-            foreach ($managerAct->getListeLieu($_GET['id']) as $UnLieux) {
-                echo $UnLieux->getLabel() . " | ". $UnLieux->getTel() . " | " . $UnLieux->getAdresse(). "<br>";
+            foreach ($managerAct->getListeUser($_GET['id']) as $UnUser) {
+                echo $UnUser->getPseudo() . " | ". $UnUser->getVille() . " | " . $UnUser->getDdn(). "<br>";
             }
         }
     }else if ($_GET['id'] == ""){
@@ -21,8 +21,8 @@
         $activite = $managerAct->get($_GET['id']);
         
         echo $activite->getNom() . "<br>";
-        foreach ($managerAct->getListeLieu($_GET['id']) as $UnLieux) {
-            echo $UnLieux->getLabel() . " | ". $UnLieux->getTel() . " | " . $UnLieux->getAdresse(). "<br>";
+        foreach ($managerAct->getListeUser($_GET['id']) as $UnUser) {
+            echo $UnUser->getPseudo() . " | ". $UnUser->getVille() . " | " . $UnUser->getDdn(). "<br>";
         }
     }
     

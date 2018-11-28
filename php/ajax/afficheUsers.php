@@ -11,7 +11,9 @@
             echo $personne->getPseudo() . " | " . $personne->getMail() . "<br>";
         }
     }
-    else {
+    else if ($_GET['id'] == ""){
+        echo "Veuillez saisir un pseudo";
+    }else{
         $personne = $managerU->get($_GET['id']);
         
         echo $personne->getPseudo() . " | " . $personne->getMail() . "<br>";

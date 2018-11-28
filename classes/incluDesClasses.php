@@ -10,4 +10,6 @@
 	require_once 'Message.class.php'; 
 	require_once 'Utilisateur.Manager.php';
 	require_once 'Utilisateur.class.php';
+        require_once 'Forum.Manager.php';
+        require_once 'Forum.class.php';
 	

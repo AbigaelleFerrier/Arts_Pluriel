@@ -11,9 +11,15 @@
     <button class="btn" onclick="afficheLieu()" >Afficher tous les lieux</button>
     <input id="lieux" placeholder="Recherche d'un lieux" list="lieuxName">
     <button class="btn" onclick="SearchLieu()">Rechercher un lieu</button>
-    <button class="btn" onclick="SearchLieuByAct()">Rechercher un lieu en fonction d'une activité</button>
+    <input id="act" placeholder="Recherche d'un lieux en fonction d'une activité" list="ActName">
+    <button class="btn" onclick="SearchLieuByAct(document.getElementById('act').value)">Rechercher un lieu en fonction d'une activité</button>
     
     <div id="Liste"></div>
+    
+    <?php
+        include 'php/footer.php';
+        include 'php/script.php';
+    ?>
     
     <datalist id="lieuxName">
         <?php
@@ -33,10 +39,6 @@
         ?>
     </datalist>
 
-    <?php
-        include 'php/footer.php';
-        include 'php/script.php';
-    ?>
 
 </body>
 </html>
