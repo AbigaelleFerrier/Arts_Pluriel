@@ -62,6 +62,7 @@ function SearchLieuByAct(id = -1){ //affiche sur le pannel d'administrateur tous
         xhr.send();
 }
 
+
 function SearchUserByAct(id = -1){
     var xhr = new XMLHttpRequest(); 
         xhr.open("GET", "php/ajax/afficheUserAct.php?id="+ id);

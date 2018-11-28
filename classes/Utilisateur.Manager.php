@@ -124,6 +124,8 @@ class UtilisateurManager {
                         die ("Erreur : ".$e->getMessage());
                     }
                     
+                    $actList = array();
+
                     while ($rowPratique = $traitementPratique->fetch()) {
                         $query = "select * from `ACTIVITE` WHERE `idA`=?";
                         try{
@@ -138,7 +140,7 @@ class UtilisateurManager {
                         if ($rowActiviter = $traitementActivite->fetch()) {
                             $activite = new Activite($rowActiviter['nomA']);
                             $activite -> setId($rowActiviter['idA']);
-                            $actList[] = $activite;
+                            array_push($actList, $activite); 
                         }
                         else {
                             $actList = "ERREUR";
