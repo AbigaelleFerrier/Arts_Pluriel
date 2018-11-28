@@ -75,11 +75,12 @@
 	  		$traitement->bindparam(1,$_POST['id']);
 	  		$traitement->execute();
 	  		
-	  		foreach ($_POST['activiter'] as $key => $value) {
+	  		foreach ($_POST['activiter'] as $idA) {
+	  			var_dump($idA);
 	  			
 	  			$SQL = "INSERT INTO `pratique` (idA, idU) VALUES (?,?) ";
-	  			$traitement->bindparam(1,$_POST['id']); <--------------------------
-	  			$traitement->bindparam(2,$_POST['id']);
+	  			$traitement->bindparam(1, $idA); 
+	  			$traitement->bindparam(2, $_POST['id']);
 	  			$traitement->execute();
 
 	  		}
