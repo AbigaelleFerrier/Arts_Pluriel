@@ -63,22 +63,24 @@
 	  	/* ------- Amelioration POO posible  ------- */
 	  	/*											 */
 	  	/*  -> modif l'obj user 					 */
-	  	/*  -> save l'obj 							 */
+	  	/*  -> save  l'obj 							 */
 	  	/*  -> modif la table pratique 				 */
-	  	/*  -> kill l'obj 							 */
+	  	/*  -> kill  l'obj 							 */
 	  	/*  -> le réinstancier 						 */
 	  	/*											 */
 	  	/* ----------------------------------------- */
 
 	  	if (isset($_POST['activiter'])) {
 	  		$SQL = "DELETE FROM `pratique` WHERE idU = ?";
+	  		$traitement = $db->prepare($SQL);
 	  		$traitement->bindparam(1,$_POST['id']);
 	  		$traitement->execute();
 	  		
 	  		foreach ($_POST['activiter'] as $idA) {
 	  			var_dump($idA);
-	  			
+
 	  			$SQL = "INSERT INTO `pratique` (idA, idU) VALUES (?,?) ";
+	  			$traitement = $db->prepare($SQL);
 	  			$traitement->bindparam(1, $idA); 
 	  			$traitement->bindparam(2, $_POST['id']);
 	  			$traitement->execute();
@@ -86,6 +88,11 @@
 	  		}
 	  	
 	  	}
+	  	
+	  	// ---------------------------------------------------------------------------- //
+	  	// ------------------------ KILLLLLL OBJ AND REINSTACY ------------------------ //
+	  	// ---------------------------------------------------------------------------- //
+
 
 
 	  	//header('location:../../profilModif.php?modifOK=1');
