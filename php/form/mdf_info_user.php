@@ -1,0 +1,98 @@
+<?php
+	var_dump($_POST);
+
+	require_once("../../classes/database.class.php");
+	$db = database::getDB();
+	
+	if (isset($_POST['id'])) {
+		
+		if ( isset($_POST['ville']) && $_POST['ville'] != "" ) {
+			$SQL = "UPDATE `UTILISATEUR` set `villeU`=?		where `idU`=?";
+			$traitement = $db->prepare($SQL);
+			$traitement->bindparam(1,$_POST['ville']);
+			$traitement->bindparam(2,$_POST['id']);
+			$traitement->execute();
+		}
+
+		if ( isset($_POST['mail']) && $_POST['mail'] != "" ) {
+			$SQL = "UPDATE `UTILISATEUR` set `mailU`=? 	where `idU`=?";
+			$traitement = $db->prepare($SQL);
+			$traitement->bindparam(1,$_POST['mail']);
+			$traitement->bindparam(2,$_POST['id']);
+			$traitement->execute();
+		}
+
+		if ( isset($_POST['dmr']) && $_POST['dmr'] != "" ) {
+			$SQL = "UPDATE `UTILISATEUR` set `distanceU`= ?  where `idU`=?";
+			$traitement = $db->prepare($SQL);
+			$traitement->bindparam(1,$_POST['dmr']);
+			$traitement->bindparam(2,$_POST['id']);
+			$traitement->execute();
+		}
+
+		if ( isset($_POST['mdp']) && $_POST['mdp'] != "" ) {
+			$SQL = "UPDATE `UTILISATEUR` set `mdpU`=MD5(?)  where `idU`=?";
+			$traitement = $db->prepare($SQL);
+			$traitement->bindparam(1,$_POST['mdp']);
+			$traitement->bindparam(2,$_POST['id']);
+			$traitement->execute();
+		}
+
+		if ( isset($_POST['tel']) && $_POST['tel'] != "" ) {
+			$SQL = "UPDATE `UTILISATEUR` set `telU`=? 		where `idU`=?";
+			$traitement = $db->prepare($SQL);
+			$traitement->bindparam(1,$_POST['tel']);
+			$traitement->bindparam(2,$_POST['id']);
+			$traitement->execute();
+		}
+
+		if ( isset($_POST['bio']) && $_POST['bio'] != "" ) {
+			$SQL = "UPDATE `UTILISATEUR` set `bioU`=? 		where `idU`=?";
+		  	$traitement = $db->prepare($SQL);
+		  	$traitement->bindparam(1,$_POST['bio']);
+		  	$traitement->bindparam(2,$_POST['id']);
+		  	$traitement->execute();
+	  	}
+	  	
+	  	/* ------- KILL DE L'obj UTILISATEUR ------- */
+	  	/*											 */
+	  	/* réafectation des nouvelle valeur juste et */
+	  	/* surtout de c'est activiter lier 			 */
+	  	/*											 */
+	  	/*											 */
+	  	/* ------- Amelioration POO posible  ------- */
+	  	/*											 */
+	  	/*  -> modif l'obj user 					 */
+	  	/*  -> save l'obj 							 */
+	  	/*  -> modif la table pratique 				 */
+	  	/*  -> kill l'obj 							 */
+	  	/*  -> le réinstancier 						 */
+	  	/*											 */
+	  	/* ----------------------------------------- */
+
+	  	if (isset($_POST['activiter'])) {
+	  		$SQL = "DELETE FROM `pratique` WHERE idU = ?";
+	  		$traitement->bindparam(1,$_POST['id']);
+	  		$traitement->execute();
+	  		
+	  		foreach ($_POST['activiter'] as $key => $value) {
+	  			
+	  			$SQL = "INSERT INTO `pratique` (idA, idU) VALUES (?,?) ";
+	  			$traitement->bindparam(1,$_POST['id']); <--------------------------
+	  			$traitement->bindparam(2,$_POST['id']);
+	  			$traitement->execute();
+
+	  		}
+	  	
+	  	}
+
+
+	  	//header('location:../../profilModif.php?modifOK=1');
+	}
+	//header('location:../../profilModif.php?modifOK=0');
+		
+
+
+
+    
+?>

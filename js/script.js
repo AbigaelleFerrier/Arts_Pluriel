@@ -61,3 +61,12 @@ function SearchLieuByAct(id = -1){ //affiche sur le pannel d'administrateur tous
         }
         xhr.send();
 }
+
+
+
+
+
+// CIRILL //
+
+
+

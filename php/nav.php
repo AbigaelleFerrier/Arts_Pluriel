@@ -2,7 +2,7 @@
     <nav class="white nav-extended scrollspy" role="navigation" id="nav">
 
         <div class="nav-wrapper container">
-            <a id="logo-container" href="#" class="brand-logo typoLogo">Arts Pluriel</a>
+            <a id="logo-container" href="index.php" class="brand-logo typoLogo">Arts Pluriel</a>
             
             <ul class="right hide-on-med-and-down">
                 <?php include 'sous-nav.php' ?>
