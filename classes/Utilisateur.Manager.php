@@ -203,6 +203,7 @@ class UtilisateurManager {
                     $activite = new Activite($rowActiviter['nomA']);
                     $activite -> setId($rowActiviter['idA']);
                     $actList[] = $activite;
+                    var_dump($actList);
                 }
                 
             }

@@ -12,16 +12,20 @@
         foreach ($listUser as $user){
             echo $user->getPseudo()  . "<br>";
             foreach ($user->getActivite() as $act) {
+                //echo "sep <br/>";
                 echo $act->getNom() . " | ";
             }
+            echo '<br><br><br>';
         }
     }else{
         $listUser = $managerU->get($_GET['id'])->getUtilisateursProches();
         foreach ($listUser as $user){
             echo $user->getPseudo()  . "<br>";
             foreach ($user->getActivite() as $act) {
+                //echo "sep <br/>";
                 echo $act->getNom() . " | ";
             }
+            echo '<br><br><br>';
         }
     }
     
