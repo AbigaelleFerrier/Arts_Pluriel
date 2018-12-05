@@ -32,8 +32,9 @@
 
     <div class="footer-copyright">
         <div class="container">
-            Design : Ferrier Cirill // Développement : Swart Wendeline</a>
+            Design : Ferrier Cirill // Développement : Swart Wendeline
+            
+            <a class="right" style="color:white;" href="MentionsLegales.php">Mentions Légales</a>
         </div>
-            <a style="color:white;" href="MentionsLegales.php">Mentions Légales</a>
     </div>
 </footer>

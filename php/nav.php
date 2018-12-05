@@ -33,3 +33,19 @@
           </ul>
         </div>
     </nav>
+
+
+    <!-- Element Showed -->
+    <div id="delForDieCookie">
+        <a id="menu" class="waves-effect waves-light btn btn-floating" onclick="//dieCookie(0)"><i class="material-icons">menu</i></a>
+    </div>
+        
+
+
+    <!-- Tap Target Structure -->
+        <div id="menuOpen" class="tap-target" data-target="menu" >
+            <div class="tap-target-content" style="border-radius: 100%">
+                <h5 style="visibility: visible; color: #fff; text-align: right;">Miams les Cookies</h5>
+                <p  style="visibility: visible; color: #fff; text-align: right;">Les cookies c'est bien mais que dans l'estomac ! Depuis le 25 Mai 2018, Arts Pluriel n'utilise plus de cookie pour stocker vos données. Pour plus d'information : consulter nos Mentions Légales</p>
+            </div>
+        </div>

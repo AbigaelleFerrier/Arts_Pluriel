@@ -24,7 +24,7 @@ if ( $_SESSION['user'] == "client") {
 	                    ?>
 	            </div>
 	            <div class="row">
-	                <form action="php/form/mdf_info_user.php" method="post">
+	                <form id="form" action="php/form/mdf_info_user.php?id=<?php echo($user->getId()) ?>" method="post">
 	                	<input style="display: none" type="text" name="id" value="<?php echo $user->getId() ?>">
 	                    <div class="input-field col s6">
 	                        <input id="ville" name="ville" type="text"  class="validate"    value="<?php echo $user->getVille(); ?>">
@@ -88,11 +88,11 @@ if ( $_SESSION['user'] == "client") {
 	                            <label>Activiter</label>
 	                        </div>
 	                        <div class="col s2">
-	                            <button class="btn" onclick="addActivite();" >Ajouter</button>
+	                            <a class="btn" onclick="btnAjouter()" >Ajouter</a>
 	                        </div>
 	                    </div>
 	                    
-	                    <button type="submit" class="btn" onclick=";" >Modifier</button>
+	                    <button type="submit" class="btn" id="Enregistre" >Modifier</button>
 	                </form>
 	                
 	                
@@ -106,9 +106,25 @@ if ( $_SESSION['user'] == "client") {
 	        include 'php/script.php';
 	    ?>
 
+	    <script type="text/javascript">
+        	function btnAjouter() {
+        		document.getElementById('form').action   += "&go=1";
+        		document.getElementById('Enregistre').click();
+        	}
+        	<?php
+        		if 		(isset($_GET['modifOK']) && $_GET['modifOK'] = "1") {
+        					echo "M.toast({html: 'Enregistrées', displayLength : 100000});";
+        		}
+        		else if (isset($_GET['modifOK']) && $_GET['modifOK'] = "0") {
+        					echo "M.toast({html: 'Une erreur c'est produite. Si l'erreur perciste, merci de contacter l'admin});";
+        		}
+        	?>
+	    </script>
+	   
 	</body>
 	</html>
 <?php
+
 }
 else {
 	header('location:Connexion.php');

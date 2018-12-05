@@ -1,7 +1,9 @@
 <?php
-	var_dump($_POST);
+	//var_dump($_POST);
+	session_start();
+	require_once("../../classes/incluDesClasses.php");
+	$managerU = new UtilisateurManager(database::getDB());
 
-	require_once("../../classes/database.class.php");
 	$db = database::getDB();
 	
 	if (isset($_POST['id'])) {
@@ -77,7 +79,7 @@
 	  		$traitement->execute();
 	  		
 	  		foreach ($_POST['activiter'] as $idA) {
-	  			var_dump($idA);
+	  			//var_dump($idA);
 
 	  			$SQL = "INSERT INTO `pratique` (idA, idU) VALUES (?,?) ";
 	  			$traitement = $db->prepare($SQL);
@@ -93,13 +95,30 @@
 	  	// ------------------------ KILLLLLL OBJ AND REINSTACY ------------------------ //
 	  	// ---------------------------------------------------------------------------- //
 
+	  	$managerU->get($_POST['id']);
+        $userUS = $managerU->get(intval($_POST['id']));
+     
+        $userS = serialize($userUS);
+        unset($_SESSION['objUser']);
+        $_SESSION['objUser']    = $userS;
 
+    // ----------------------------------------------------------------- //
+  	// ------------------------    REDIRECTION  ------------------------ //
+  	// ----------------------------------------------------------------- //
 
-	  	//header('location:../../profilModif.php?modifOK=1');
+    
+        if (isset($_GET['go']) && $_GET['go'] = "1") {
+        	header('location:../../ajouterUneActiviter.php?to=profilModif');
+        }
+        else {
+        	header('location:../../profilModif.php?modifOK=1');
+        	
+        }
+	  	
 	}
-	//header('location:../../profilModif.php?modifOK=0');
-		
-
+	else {
+		header('location:../../profilModif.php?modifOK=0');
+	} 
 
 
     

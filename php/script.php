@@ -11,28 +11,58 @@
 	
 	document.addEventListener('DOMContentLoaded', function() {
 	    var elems = document.querySelectorAll('.fixed-action-btn');
-	    var instances = M.FloatingActionButton.init(elems, options);
+	    var instances = M.FloatingActionButton.init(elems);
 	});
 
 	document.addEventListener('DOMContentLoaded', function() {
 	    var elems = document.querySelectorAll('.scrollspy');
-	    var instances = M.ScrollSpy.init(elems, options);
+	    var instances = M.ScrollSpy.init(elems);
 	});
 
 	document.addEventListener('DOMContentLoaded', function() {
 	    var elems = document.querySelectorAll('.modal');
-	    var instances = M.Modal.init(elems, options);
+	    var instances = M.Modal.init(elems);
 	});
 
 	document.addEventListener('DOMContentLoaded', function() {
 	    var elems = document.querySelectorAll('.tooltipped');
-	    var instances = M.Tooltip.init(elems, options);
+	    var instances = M.Tooltip.init(elems);
 	  });
 
 	$(document).ready(function() {
     	M.updateTextFields();
   	});
-  	
+
+
+
+
+
+
+	function dieCookie() {
+    	// instanceMenu.destroy();
+    	document.getElementById('delForDieCookie').innerHTML = "";
+    }
+
+  	document.addEventListener('DOMContentLoaded', function() {
+    	var elems = document.querySelectorAll('.tap-target');
+    	var instances = M.TapTarget.init(elems, {onClose : dieCookie()});
+  	});
+  
+
+    var instanceMenu = M.TapTarget.getInstance(document.getElementById('menuOpen'));
+    
+    <?php
+    	if (isset($_SESSION['user'])) {
+    		echo "dieCookie();";
+    	}
+    	else {
+			echo "instanceMenu.open();";
+    	}
+    ?>
+
+
+    
+
 	$(document).ready(function() {
 		$('.js-scrollTo').on('click', function() { // Au clic sur un élément
 			var page = $(this).attr('href'); // Page cible
