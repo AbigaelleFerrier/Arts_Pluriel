@@ -16,12 +16,12 @@
 
         <div class="nav-content container center">
           <ul class="tabs tabs-transparent">
-            <li class="tab"> <a href="rechercher_un_lieux_activiter.php">Rechercher un lieux</a></li>
+            <li class="tab"> <a onclick="window.location.href = 'rechercher_un_lieux_activiter.php'" href="rechercher_un_lieux_activiter.php">Rechercher un lieux</a></li>
 
             <?php
                 if(isset($_SESSION['user'])) {
-                    echo '<li class="tab"><a href="rechercher_une_personne.php">Rechercher une personnne</a></li>';
-                    echo '<li class="tab"><a href="forum.php">Forum</a></li>';
+                    echo '<li class="tab"><a href="rechercher_une_personne.php" onclick="window.location.href = \'rechercher_une_personne.php\'">Rechercher une personnne</a></li>';
+                    echo '<li class="tab"><a href="forum.php" onclick="window.location.href = \'forum.php\'">Forum</a></li>';
                 }
                 else {
                     echo '<li class="tab"><a href="#!" class="disbled disabledLi tooltipped"  data-position="bottom" data-tooltip="Vous devez être connecté">Rechercher une personnne</a></li>';
