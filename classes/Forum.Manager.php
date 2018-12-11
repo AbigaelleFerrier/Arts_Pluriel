@@ -45,6 +45,8 @@ class ForumManager {
             $traitement = $this->db->prepare($query);
             $param1=$f->getTitre();
             $traitement->bindparam(1,$param1);
+            $param2=$f->getAct();
+            $traitement->bindparam(2,$param2);
             $traitement->execute();
         }
     }
@@ -118,5 +120,18 @@ class ForumManager {
             $mList[] = $message;
         }
         return $mList; 
+    }
+    
+    public function getMaxId(){
+        $query = "select MAX(idF) from FORUM ";
+        try{
+            $traitement = $this->db->prepare($query);
+            $traitement->execute();
+        }catch(PDOException $e){
+            die ("Erreur : ".$e->getMessage());
+        }
+        $row = $traitement->fetch();
+        var_dump($row);
+        return $row[0]; 
     }
 }
