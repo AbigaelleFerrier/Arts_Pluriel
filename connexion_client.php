@@ -44,6 +44,7 @@ try {
         else{
             //aucun résultat pour le couple login/mdp saisi
             $_SESSION['access']="denied";
+            unset($_SESSION['user'], $_SESSION['admin'], $_SESSION['objUser'], $_SESSION['access']);
             header('location:Connexion.php');
         }
     }
