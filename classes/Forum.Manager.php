@@ -101,4 +101,22 @@ class ForumManager {
         $forum->setId($row['idF']);
         return $forum;    
     }
+    
+    public function getMessage($id){
+        $query = "select * from MESSAGE where idF=?";
+        $mList = Array();
+        try{
+            $traitement = $this->db->prepare($query);
+            $traitement->bindparam(1,$id);
+            $traitement->execute();
+        }catch(PDOException $e){
+            die ("Erreur : ".$e->getMessage());
+        }
+        while ($row = $traitement->fetch()){
+            $message = new Message($row['textM'],$row['idUEnvoie'],$row['idF']);
+            $message->setId($row['idM']);
+            $mList[] = $message;
+        }
+        return $mList; 
+    }
 }

@@ -36,6 +36,11 @@
                        $ligne['textM']."<br><br>";
             }
             //ajouter un sorte d'input txt avec un bt envoyer qui enregistre avec du js/ajax dans la bd
+            ?> <form method="post" name="formulaire" action="SaveMessage.php?id=<?php echo $idEnvoie; ?>&idUser=<?php echo $idUserCourant; ?>">
+                <textarea id="contenuTxt" name="contenuTxt"></textarea>
+                <button type="submit" class="btn">Envoyer</button>
+            </form>
+            <?php
         }
         catch(PDOException $e){
             header("location:index.php");

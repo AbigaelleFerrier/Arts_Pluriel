@@ -86,3 +86,32 @@ function SeachUserByDist(id){
         }
         xhr.send();
 }
+
+function afficheForum(id = -1){
+    var xhr = new XMLHttpRequest(); 
+        xhr.open("GET", "php/ajax/afficheForum.php?id="+ id);
+        
+        xhr.onreadystatechange = function(){
+            if (xhr.readyState == 4 && xhr.status == 200){
+                document.getElementById('Liste').innerHTML = xhr.responseText;
+            }
+        }
+        xhr.send();
+}
+
+function SearchForum(){
+    var idSelected = document.getElementById('fTitre').value;
+    afficheForum(idSelected);
+}
+
+function SearchForumByAct(id = -1){
+    var xhr = new XMLHttpRequest(); 
+        xhr.open("GET", "php/ajax/afficheForumAct.php?id="+ id);
+        
+        xhr.onreadystatechange = function(){
+            if (xhr.readyState == 4 && xhr.status == 200){
+                document.getElementById('Liste').innerHTML = xhr.responseText;
+            }
+        }
+        xhr.send();
+}
