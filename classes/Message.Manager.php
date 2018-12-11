@@ -33,7 +33,7 @@ class MessageManager {
             $nbRows=$ligne[0];
         }
         if ($nbRows > 0){ 
-            $query = "update `MESSAGE` set `textM`=?, `idUEnvoie`=?, `idURecois`=? where `idM`=?";
+            $query = "update `MESSAGE` set `textM`=?, `idUEnvoie`=?, `idURecois`=?, idF=? where `idM`=?";
             $traitement = $this->db->prepare($query);
             $param1=$mess->getText();
             $traitement->bindparam(1,$param1);
@@ -41,11 +41,13 @@ class MessageManager {
             $traitement->bindparam(2,$param2);
             $param3=$mess->getIdRecois();
             $traitement->bindparam(3,$param3);
-            $param4=$mess->getId();
+            $param4=$mess->getIdF();
             $traitement->bindparam(4,$param4);
+            $param5=$mess->getId();
+            $traitement->bindparam(5,$param5);
             $traitement->execute();
         }else{ 
-            $query = "insert into `MESSAGE` (`textM`, `idUEnvoie`, `idURecois`) values (?,?,?)";
+            $query = "insert into `MESSAGE` (`textM`, `idUEnvoie`, `idURecois`, idF) values (?,?,?,?)";
             $traitement = $this->db->prepare($query);
             $param1=$mess->getText();
             $traitement->bindparam(1,$param1);
@@ -53,6 +55,8 @@ class MessageManager {
             $traitement->bindparam(2,$param2);
             $param3=$mess->getIdRecois();
             $traitement->bindparam(3,$param3);
+            $param4=$mess->getIdF();
+            $traitement->bindparam(4,$param4);
             $traitement->execute();
         }
     }

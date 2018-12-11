@@ -10,7 +10,7 @@
         //$ListForum = $managerM->getList('idF',$_GET['id']);
         $listForum = $managerF->getList();
         foreach ($listForum as $discussion){
-            echo $discussion->getTitre() . "<br>";
+            echo "<a class='btn' href='discussion.php?id=".$discussion->getId()."'>".$discussion->getTitre()."</a>";
         }
     }
     else if ($_GET['id'] == ""){
@@ -18,6 +18,6 @@
     }else{
         $discussion = $managerF->get($_GET['id']);
         
-        echo $discussion->getTitre() . "<br>";
+        echo "<a class='btn' href='discussion.php?id=".$discussion->getId()."'>".$discussion->getTitre()."</a>";
     }
 ?>

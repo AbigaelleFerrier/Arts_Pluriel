@@ -15,10 +15,9 @@
             echo $activite->getNom()  . "<br>";
             $ListForum = $managerF->getList("WHERE idA =". $_GET['id']);
             foreach ($ListForum as $discussion) {
-            echo $discussion->getTitre(). "<br><br>";
-            
-            //echo "<a class='btn'  href='message.php?id=".$ligne['idUEnvoie']."&idUser=".$idUtilisateur_a_use."'>".$ligne['pseudoU']."</a>";
-        }
+                echo "<a class='btn' href='discussion.php?id=".$discussion->getId()."'>".$discussion->getTitre()."</a>";
+                echo "<br>";
+            }
         }
     }else if ($_GET['id'] == ""){
         echo "Veuillez choisir une activité";
@@ -26,7 +25,8 @@
         $activite = $managerAct->get($_GET['id']);
         $ListForum = $managerF->getList("WHERE idA =". $_GET['id']);
         foreach ($ListForum as $discussion) {
-            echo $discussion->getTitre(). "<br><br>";
+            echo "<a class='btn' href='discussion.php?id=".$discussion->getId()."'>".$discussion->getTitre()."</a>";
+            echo "<br>";
         }
     }
     

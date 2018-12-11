@@ -4,13 +4,13 @@ require_once 'classes/incluDesClasses.php';
 $ctMs = $_POST['contenuTxt'];
 $managerM = new MessageManager(database::getDB());
 
-$idEnvoie = $_GET['id'];
+$idEnvoie = null;
 $idUserCourant = $_GET['idUser'];
-$idF = null;
+$idF = $_GET['idF'];
 
 $mes = new Message($ctMs,$idEnvoie,$idUserCourant,$idF);
 $managerM->save($mes);
 
-header('location:message.php?id='.$idEnvoie.'&idUser='.$idUserCourant);
+header('location:discussion.php?id='.$idF);
 
 ?>
