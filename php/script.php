@@ -52,11 +52,12 @@
     var instanceMenu = M.TapTarget.getInstance(document.getElementById('menuOpen'));
     
     <?php
-    	if (isset($_SESSION['user'])) {
-    		echo "dieCookie();";
+    	if (isset($_SESSION['user']) &&  ! isset($_SESSION['afficheCookie'])) {
+    		echo "instanceMenu.open();";
+    		$_SESSION['afficheCookie'] = true;
     	}
     	else {
-			echo "instanceMenu.open();";
+			echo "dieCookie();";
     	}
     ?>
 
