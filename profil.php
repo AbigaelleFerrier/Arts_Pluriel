@@ -28,7 +28,7 @@
 
         try{
             $connexion = database::getDB();
-            $req = "select idU from `UTILISATEUR` WHERE `idU`=?";
+            $req = "SELECT idU from `UTILISATEUR` WHERE `idU`=?";
             $traitement = $connexion->prepare($req);
             $traitement ->bindparam(1, $idUtilisateur_a_use);
             $traitement ->execute();

@@ -9,10 +9,10 @@ try {
 
     $connexion = database::getDB();
     //la requete compte le nb de ligne correspondant au couple login/mdp
-    $req = "SELECT * from UTILISATEUR where mailU=:m and mdpU=MD5(:p);";
+    $req = "SELECT * from UTILISATEUR where mailU=? and mdpU=MD5(?);";
     $traitement = $connexion->prepare($req);
-    $traitement->bindparam(':m', $_POST['email']);
-    $traitement->bindparam(':p', $_POST['password']);
+    $traitement->bindparam(1, $_POST['email']);
+    $traitement->bindparam(2, $_POST['password']);
     $traitement->execute();
 
 
@@ -30,28 +30,29 @@ try {
                 $_SESSION['access']     = "limited";
               // ---------------------------------------------
                 header('location:profil.php');
-            }catch(Exception $e){
+            }
+            catch(Exception $e){
                 echo $e;
             }
     } 
     else {
-        $req2 ="SELECT * from ADMIN where mailAdm=:m and mdpAdm=MD5(:p);";
+        $req2 = "SELECT * from ADMIN where mailAdm=? and mdpAdm=MD5(?);";
         $traitement2 = $connexion->prepare($req2);
-        $traitement2->bindparam(':m',$_POST['email']);
-        $traitement2->bindparam(':p',$_POST['password']);
+        $traitement2->bindparam(1, $_POST['email']);
+        $traitement2->bindparam(2, $_POST['password']);
         $traitement2->execute();
         
         if ($ligne=$traitement2->fetch()){
             
-            $_SESSION['user']="admin";
-            $_SESSION['access']="ok";
+            $_SESSION['user']   =   "admin";
+            $_SESSION['access'] =   "ok";
             header('location:adminPanel.php');
         }
         else{
             //aucun résultat pour le couple login/mdp saisi
-            $_SESSION['access']="denied";
+            $_SESSION['access'] =   "denied";
             //var_dump("yolo");
-            //header('location:Connexion.php');
+            header('location:Connexion.php');
         }
     }
 }

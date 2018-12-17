@@ -24,7 +24,7 @@ class UtilisateurManager {
             $nbRows=$ligne[0];
         }
         if ($nbRows > 0){ 
-            $query = "update `UTILISATEUR` set `pseudoU`=?, `nomU`=?, `prenomU`=?,`mailU`=?, `telU`=?, `villeU`=?, `distanceU`=?, `mdpU`=MD5(?),`ddnU`=?, `bioU`=?,`LAT`=?, `LONG`=? where `idU`=?";
+            $query = "update `UTILISATEUR` set `pseudoU`=?, `nomU`=?, `prenomU`=?,`mailU`=?, `telU`=?, `villeU`=?, `distanceU`=?, `mdpU`=?,`ddnU`=?, `bioU`=?,`LAT`=?, `LONG`=? where `idU`=?";
             $traitement = $this->db->prepare($query);
             $param1=$user->getPseudo();
             $traitement->bindparam(1,$param1);

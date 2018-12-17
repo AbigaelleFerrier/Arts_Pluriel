@@ -13,7 +13,6 @@
 
     // Obj Utilisateur //
     if (isset($_SESSION['objUser'])) {
-    	$user = unserialize($_SESSION['objUser']);
+        $user = unserialize($_SESSION['objUser']);
     }
-
 ?>
