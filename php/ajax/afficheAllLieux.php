@@ -15,6 +15,7 @@
                       <th>Nom</th>
                       <th>Ville</th>
                       <th>Adresse</th>
+                      <th>Téléphone</th>
                     </tr>
                   </thead>
 
@@ -25,6 +26,7 @@
                               echo "<td>" . $endroit->getLabel()   . "</td>";
                               echo "<td>" . $endroit->getVille()   . "</td>";
                               echo "<td>" . $endroit->getAdresse() . "</td>";
+                              echo "<td>" . $endroit->getTel()     . "</td>";
                           echo "</tr>";
                       }
         echo "    </tbody>
@@ -41,6 +43,7 @@
                       <th>Nom</th>
                       <th>Ville</th>
                       <th>Adresse</th>
+                      <th>Téléphone</th>
                     </tr>
                   </thead>
 
@@ -49,6 +52,7 @@
                       echo "<td>" . $endroit->getLabel()   . "</td>";
                       echo "<td>" . $endroit->getVille()   . "</td>";
                       echo "<td>" . $endroit->getAdresse() . "</td>";
+                      echo "<td>" . $endroit->getTel()     . "</td>";
                   echo "</tr>";
       echo "    </tbody>
             </table>";

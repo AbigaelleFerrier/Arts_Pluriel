@@ -16,12 +16,12 @@ require_once("database.class.php");
 class ActiviteManager {
     //put your code here
     private $db;
-    
+
     public function __construct($database){
         $this->db=$database;
     }
-    
-    public function save(Activite $act){        
+
+    public function save(Activite $act){
         $nbRows = 0;
         if ($act->getId()!=''){
             $query = "select count(*) as nb from `ACTIVITE` where `idA`=?";
@@ -32,7 +32,7 @@ class ActiviteManager {
             $ligne = $traitement->fetch();
             $nbRows=$ligne[0];
         }
-        if ($nbRows > 0){ 
+        if ($nbRows > 0){
             $query = "update `ACTIVITE` set `nomA`=? where `idA`=?";
             $traitement = $this->db->prepare($query);
             $param1=$act->getNom();
@@ -40,7 +40,7 @@ class ActiviteManager {
             $param2=$act->getId();
             $traitement->bindparam(2,$param2);
             $traitement->execute();
-        }else{ 
+        }else{
             $query = "insert into `ACTIVITE` (`nomA`) values (?)";
             $traitement = $this->db->prepare($query);
             $param1=$act->getNom();
@@ -48,10 +48,10 @@ class ActiviteManager {
             $traitement->execute();
         }
     }
-    
+
     public function delete(Activite $act){
         $nbRows = 0;
-        if ($act->getId()!=''){                    
+        if ($act->getId()!=''){
             $query = "select count(*) as nb from `ACTIVITE` where `idA`=?";
             $traitement = $this->db->prepare($query);
             $param1 = $act->getId();
@@ -64,13 +64,13 @@ class ActiviteManager {
             $traitement = $this->db->prepare($query);
             $param1 = $act->getId();
             $traitement->bindparam(1,$param1);
-            $traitement->execute();            
+            $traitement->execute();
             return true;
         }else {
             return false;
         }
     }
-    
+
     public function getList($restriction='WHERE 1'){
         $query = "select * from `ACTIVITE` ".$restriction."";
         $actList = Array();
@@ -84,9 +84,9 @@ class ActiviteManager {
             $activite->setId($row['idA']);
             $actList[] = $activite;
         }
-        return $actList;   
+        return $actList;
     }
-    
+
     public function get($id){
         $query = "select * from `ACTIVITE` WHERE `idA`=?";
         try{
@@ -99,11 +99,11 @@ class ActiviteManager {
         $row = $traitement->fetch();
         $activite = new Activite($row['nomA']);
         $activite->setId($row['idA']);
-        return $activite;    
+        return $activite;
     }
-    
+
     public function getListeLieu($id){ //donne la liste des lieux où pratiquer une activité
-        $query = "select st.idL,labelL,telL,adresseL,idA from `se_trouver` st,LIEUX l where st.idL = l.idL and idA=".$id." ";
+        $query = "select st.idL,labelL,telL,adresseL,idA,villeL from `se_trouver` st,LIEUX l where st.idL = l.idL and idA=".$id." ";
         $LieuList = Array();
         try{
             $result = $this->db->Query($query);
@@ -111,13 +111,13 @@ class ActiviteManager {
             die ("Erreur : ".$e->getMessage());
         }
         while ($row = $result->fetch()){
-            $lieu = new Lieux($row['labelL'],$row['telL'],"",$row['adresseL']);
+            $lieu = new Lieux($row['labelL'],$row['telL'],$row['villeL'],$row['adresseL']);
             $lieu->setId($row['idL']);
             $LieuList[] = $lieu;
         }
-        return $LieuList; 
+        return $LieuList;
     }
-    
+
     public function getListeUser($id){ //donne la liste des utilisateur pratiquant l'activité
         $query = "select p.idU,pseudoU,	villeU,ddnU,idA from `pratique` p, UTILISATEUR u where p.idU = u.idU and idA=".$id." ";
         $UserList = Array();
@@ -131,6 +131,6 @@ class ActiviteManager {
             $user->setId($row['idU']);
             $UserList[] = $user;
         }
-        return $UserList; 
+        return $UserList;
     }
 }
