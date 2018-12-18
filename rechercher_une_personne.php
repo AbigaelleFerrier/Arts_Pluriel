@@ -8,20 +8,57 @@
 
     <?php include 'php/nav.php'; ?>
 
-   <button class="btn" onclick="afficheUser()" >Afficher tous les utilisateurs</button>
-   <input id="pseudo" placeholder="Recherche d'un Pseudo" list="utilisateurPseudo">
-    <button class="btn" onclick="SearchUser()"> Rechercher un utilisateur</button>
-    <input id="act" placeholder="Recherche à partir d'une activité" list="ActName">
-    <button class="btn" onclick="SearchUserByAct(document.getElementById('act').value)">Rechercher un utilisateur à partir d'une activité</button>
-    <button class="btn" onclick="SeachUserByDist(<?php echo $user->getId() ?>)">Rechercher en fonction de "MaDistance"</button>
 
-    <div id="Liste"></div>
-    
+
+    <div class="container" style="margin-top : 2vw; margin-bottom : 2vw">
+        <div class="row">
+          <div class="col s12">
+              <table>
+                  <tr>
+                    <td>
+                      <button class="btn" onclick="afficheUser()" >Afficher tous les utilisateurs</button>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <button class="btn" onclick="SeachUserByDist(<?php echo $user->getId() ?>)">Rechercher en fonction de "MaDistance"</button>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <button class="btn" onclick="SearchUser()"> Rechercher un utilisateur</button>
+                    </td>
+                    <td>
+                      <input id="pseudo" placeholder="Recherche d'un Pseudo" list="utilisateurPseudo">
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <button class="btn" onclick="SearchUserByAct(document.getElementById('act').value)">Rechercher un utilisateur à partir d'une activité</button>
+                    </td>
+                    <td>
+                      <input id="act" placeholder="Recherche à partir d'une activité" list="ActName">
+                    </td>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="container " style="margin-top : 2vw; margin-bottom : 2vw">
+        <div class="row">
+              <div class="col s12">
+                  <div id="Liste"></div>
+              </div>
+        </div>
+    </div>
+
     <?php
         include 'php/footer.php';
         include 'php/script.php';
     ?>
-    
+
     <datalist id="utilisateurPseudo">
         <?php
             $listUser = $managerU->getList();
