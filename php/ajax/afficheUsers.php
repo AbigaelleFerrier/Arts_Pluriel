@@ -23,6 +23,10 @@
                         echo "<tr>";
                             echo "<td>" . $personne->getPseudo()   . "</td>";
                             echo "<td>" . $personne->getMail()   . "</td>";
+                            foreach ($variable as $key => $value) {
+                              // code...
+                            }
+
                             echo "<td>" . "<a href='profil.php?id=". $personne->getId() ."'>Voir son profil</a>" . "</td>";
                         echo "</tr>";
                     }
