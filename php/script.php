@@ -8,7 +8,7 @@
 <script>
 
   	M.AutoInit();
-	
+
 	document.addEventListener('DOMContentLoaded', function() {
 	    var elems = document.querySelectorAll('.fixed-action-btn');
 	    var instances = M.FloatingActionButton.init(elems);
@@ -47,11 +47,11 @@
     	var elems = document.querySelectorAll('.tap-target');
     	var instances = M.TapTarget.init(elems, { onClose : 'dieCookie()' });
   	});
-  
+
   	// LES COOKIES
 
     var instanceMenu = M.TapTarget.getInstance(document.getElementById('menuOpen'));
-    
+
     <?php
     	if (isset($_SESSION['user']) &&  ! isset($_SESSION['afficheCookie'])) {
     		echo "instanceMenu.open();";
@@ -73,9 +73,9 @@
 					console.log(position.coords.latitude);
 					console.log(position.coords.longitude);
 
-					var xhr = new XMLHttpRequest(); 
+					var xhr = new XMLHttpRequest();
 			        xhr.open("GET", "php/ajax/saveMaPosition.php?LAT="+ position.coords.latitude +"&LONG="+ position.coords.longitude);
-			        
+
 			        // xhr.onreadystatechange = function(){
 			        //     if (xhr.readyState == 4 && xhr.status == 200){
 			        //     }
@@ -106,8 +106,8 @@
 
 
 				if(navigator.geolocation) {
-					// Le paramètre maximumAge met en cache la position 
-					// pour une durée de 600000 millisecondes (10 minutes), 
+					// Le paramètre maximumAge met en cache la position
+					// pour une durée de 600000 millisecondes (10 minutes),
 					// ainsi la position est mise à jour toutes les 10 minutes au maximum.
 					navigator.geolocation.getCurrentPosition(saveMaPosition, erreurPosition,{maximumAge:600000});
 				}
@@ -116,7 +116,7 @@
 			}
 		?>
 
-	// ------------------------------------------------------- // 
+	// ------------------------------------------------------- //
 
 	$(document).ready(function() {
 		$('.js-scrollTo').on('click', function() { // Au clic sur un élément
@@ -128,5 +128,15 @@
 	});
 
 	//js-scrollTo
+
+    // ------------------------------------------------------- //
+
+    <?php
+        if (isset($_GET['id']) && isset($_GET['idUser'])) {
+            echo "message(". $_GET['id'] .",". $_GET['idUser'] .");";
+            echo 'document.getElementById("contenuTxt").focus();';
+
+        }
+    ?>
 
 </script>

@@ -144,7 +144,6 @@
     ?>
 
     <script type="text/javascript">
-        \
         var elem = document.getElementById("parallax");
         var obj  = document.getElementById("homeImg");
         var opacity = 1;

@@ -1,16 +1,17 @@
 <?php
 
 require_once 'classes/incluDesClasses.php';
-$ctMs = $_POST['contenuTxt'];
-$managerM = new MessageManager(database::getDB());
+if ($_POST['contenuTxt'] != "") {
+    $ctMs = $_POST['contenuTxt'];
+    $managerM = new MessageManager(database::getDB());
 
-$idEnvoie = $_GET['id'];
-$idUserCourant = $_GET['idUser'];
-$idF = null;
+    $idEnvoie = $_GET['id'];
+    $idUserCourant = $_GET['idUser'];
+    $idF = null;
 
-$mes = new Message($ctMs,$idEnvoie,$idUserCourant,$idF);
-$managerM->save($mes);
-
-header('location:message.php?id='.$idEnvoie.'&idUser='.$idUserCourant);
+    $mes = new Message($ctMs,$idEnvoie,$idUserCourant,$idF);
+    $managerM->save($mes);
+}
+header('location:messagerie.php?id='.$idEnvoie.'&idUser='. $idUserCourant );
 
 ?>

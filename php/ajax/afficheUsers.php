@@ -12,7 +12,8 @@
                   <thead>
                     <tr>
                       <th>Pseudo</th>
-                      <th>Mail</th>
+                      <th>Activiter</th>
+                      <th></th>
                     </tr>
                   </thead>
 
@@ -21,18 +22,20 @@
 
                     foreach ($listUsers as $personne){
                         echo "<tr>";
-                            echo "<td>" . $personne->getPseudo()   . "</td>";
-                            echo "<td>" . $personne->getMail()   . "</td>";
-                            foreach ($variable as $key => $value) {
-                              // code...
-                            }
+                            echo "<td class='showPersonnePseudo typoLogo'>" . $personne->getPseudo()   . "</td>";
+                            //echo "<td>" . $personne->getMail()   . "</td>";
+                            echo "<td>";
+                                foreach ($personne->getActivite() as $key => $activiter) {
+                                  echo '<div class="chip ">'. $activiter->getNom() . "</div>";
+                                }
+                            echo "</td>";
 
-                            echo "<td>" . "<a href='profil.php?id=". $personne->getId() ."'>Voir son profil</a>" . "</td>";
+                            echo "<td>" . "<a class='btn right' href='profil.php?id=". $personne->getId() ."'>Voir son profil</a>" . "</td>";
                         echo "</tr>";
                     }
     }
     else if ($_GET['id'] == ""){
-        echo "Veuillez saisir un pseudo";
+        echo "<h3>Veuillez saisir un pseudo</h3>";
     }else{
         $personne = $managerU->get($_GET['id']);
 
@@ -40,15 +43,22 @@
                   <thead>
                     <tr>
                       <th>Pseudo</th>
-                      <th>Mail</th>
+                      <th>Activiter</th>
+                      <th></th>
                     </tr>
                   </thead>
 
                   <tbody>';
                   echo "<tr>";
-                      echo "<td>" . $personne->getPseudo()   . "</td>";
-                      echo "<td>" . $personne->getMail()   . "</td>";
-                      echo "<td>" . "h" . "</td>";
+                      echo "<td class='showPersonnePseudo typoLogo'>" . $personne->getPseudo()   . "</td>";
+                      //echo "<td>" . $personne->getMail()   . "</td>";
+                      echo "<td>";
+                          foreach ($personne->getActivite() as $key => $activiter) {
+                            echo '<div class="chip ">'. $activiter->getNom() . "</div>";
+                          }
+                      echo "</td>";
+
+                      echo "<td>" . "<a class='btn right' href='profil.php?id=". $personne->getId() ."'>Voir son profil</a>" . "</td>";
                   echo "</tr>";
 
           echo "    </tbody>

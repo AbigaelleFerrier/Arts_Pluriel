@@ -5,9 +5,9 @@ function saveDonnee($user){
 }
 
 function afficheUser(id = -1){ //affiche sur le pannel d'administrateur tous les utilisateurs
-    var xhr = new XMLHttpRequest(); 
+    var xhr = new XMLHttpRequest();
         xhr.open("GET", "php/ajax/afficheUsers.php?id="+ id);
-        
+
         xhr.onreadystatechange = function(){
             if (xhr.readyState == 4 && xhr.status == 200){
                 document.getElementById('Liste').innerHTML = xhr.responseText;
@@ -21,9 +21,9 @@ function modifDonnee($admin){
 }
 
 function afficheLieu(id = -1){ //affiche sur le pannel d'administrateur tous les lieux
-    var xhr = new XMLHttpRequest(); 
+    var xhr = new XMLHttpRequest();
         xhr.open("GET", "php/ajax/afficheAllLieux.php?id="+ id);
-        
+
         xhr.onreadystatechange = function(){
             if (xhr.readyState == 4 && xhr.status == 200){
                 document.getElementById('Liste').innerHTML = xhr.responseText;
@@ -37,23 +37,23 @@ function SearchUser(){ //recherche d'un utilisateur en particulier
     afficheUser(idSelected);
 }
 
-function SearchLieu(){ //recherche d'un lieu en particulier 
+function SearchLieu(){ //recherche d'un lieu en particulier
     var idSelected = document.getElementById('lieux').value;
     afficheLieu(idSelected);
 }
 
 function deleteActivite($user, $this){ //suppression d'une activité de l'utilisateur
-    
+
 }
 
 function addActivite(){ //ajouter une activité à l'utilisateur
-    
+
 }
 
 function SearchLieuByAct(id = -1){ //affiche sur le pannel d'administrateur tous les lieux
-    var xhr = new XMLHttpRequest(); 
+    var xhr = new XMLHttpRequest();
         xhr.open("GET", "php/ajax/afficheAct.php?id="+ id);
-        
+
         xhr.onreadystatechange = function(){
             if (xhr.readyState == 4 && xhr.status == 200){
                 document.getElementById('Liste').innerHTML = xhr.responseText;
@@ -64,9 +64,9 @@ function SearchLieuByAct(id = -1){ //affiche sur le pannel d'administrateur tous
 
 
 function SearchUserByAct(id = -1){
-    var xhr = new XMLHttpRequest(); 
+    var xhr = new XMLHttpRequest();
         xhr.open("GET", "php/ajax/afficheUserAct.php?id="+ id);
-        
+
         xhr.onreadystatechange = function(){
             if (xhr.readyState == 4 && xhr.status == 200){
                 document.getElementById('Liste').innerHTML = xhr.responseText;
@@ -76,9 +76,9 @@ function SearchUserByAct(id = -1){
 }
 
 function SeachUserByDist(id){
-    var xhr = new XMLHttpRequest(); 
+    var xhr = new XMLHttpRequest();
         xhr.open("GET", "php/ajax/afficheUserDist.php?id="+ id);
-        
+
         xhr.onreadystatechange = function(){
             if (xhr.readyState == 4 && xhr.status == 200){
                 document.getElementById('Liste').innerHTML = xhr.responseText;
@@ -88,9 +88,9 @@ function SeachUserByDist(id){
 }
 
 function afficheForum(id = -1){
-    var xhr = new XMLHttpRequest(); 
+    var xhr = new XMLHttpRequest();
         xhr.open("GET", "php/ajax/afficheForum.php?id="+ id);
-        
+
         xhr.onreadystatechange = function(){
             if (xhr.readyState == 4 && xhr.status == 200){
                 document.getElementById('Liste').innerHTML = xhr.responseText;
@@ -105,9 +105,9 @@ function SearchForum(){
 }
 
 function SearchForumByAct(id = -1){
-    var xhr = new XMLHttpRequest(); 
+    var xhr = new XMLHttpRequest();
         xhr.open("GET", "php/ajax/afficheForumAct.php?id="+ id);
-        
+
         xhr.onreadystatechange = function(){
             if (xhr.readyState == 4 && xhr.status == 200){
                 document.getElementById('Liste').innerHTML = xhr.responseText;
@@ -115,3 +115,20 @@ function SearchForumByAct(id = -1){
         }
         xhr.send();
 }
+
+function message(idU, idUtilisateur_a_use) {
+    var xhr = new XMLHttpRequest();
+        xhr.open("GET", "message.php?id=" + idU + "&idUser="+  idUtilisateur_a_use);
+
+        xhr.onreadystatechange = function(){
+            if (xhr.readyState == 4 && xhr.status == 200){
+                document.getElementById('ListMessage').innerHTML = xhr.responseText;
+                document.getElementById("contenuTxt").focus();
+            }
+        }
+        xhr.send();
+
+}
+
+
+afficheForum();

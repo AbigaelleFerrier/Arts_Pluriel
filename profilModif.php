@@ -12,15 +12,15 @@ if ( $_SESSION['user'] == "client") {
 	<body>
 
 	    <?php include 'php/nav.php'; ?>
-	    <div id="profil">
+	    <div id="profil" cntP="true">
 	        <div class="container" >
-	            <div class="row">		
+	            <div class="row">
 	                <h1>Modification du Profil : <span class="typoLogo" style="font-size: 3vw"><?php echo $user->getPseudo(); ?></span></h1>
-	                    
-	                    <?php 
+
+	                    <?php
 	                        $d = substr($user->getDdn(), 0, 4);
-	                        $d = date('Y') - $d;   
-	                        
+	                        $d = date('Y') - $d;
+
 	                    ?>
 	            </div>
 	            <div class="row">
@@ -58,7 +58,7 @@ if ( $_SESSION['user'] == "client") {
 	                                <?php
 	                                    $tabAct = $user->getActivite($user->getId());
 										$whereNoIn = "WHERE 1";
-	                                   
+
 	                                    foreach ($tabAct as $key => $objAct) {
 	                                    	/* ----------------------------------------------------------------------------- */
 	                                    	// Recup les diff id pour cree un "where" qui ne prend pas les id deja activiver //
@@ -74,13 +74,13 @@ if ( $_SESSION['user'] == "client") {
 		                                    	}
 	                                    	/* ------------ */
 	                                        echo '<option value="'.  $objAct->getId().'" selected>';
-	                                            echo $objAct->getNom(); 
+	                                            echo $objAct->getNom();
 	                                        echo "</option >";
 	                                    }
 
 	                                    foreach ($managerAct->getList($whereNoIn) as $key => $objAct) {
 	                                    	echo '<option  value="'.  $objAct->getId().'">';
-	                                            echo $objAct->getNom(); 
+	                                            echo $objAct->getNom();
 	                                        echo "</option >";
 	                                    }
 	                                ?>
@@ -91,16 +91,16 @@ if ( $_SESSION['user'] == "client") {
 	                            <a class="btn" onclick="btnAjouter()" >Ajouter</a>
 	                        </div>
 	                    </div>
-	                    
+
 	                    <button type="submit" class="btn" id="Enregistre" >Modifier</button>
 	                </form>
-	                
-	                
+
+
 
 	            </div>
 	        </div>
 	    </div>
-	         
+
 	    <?php
 	        include 'php/footer.php';
 	        include 'php/script.php';
@@ -120,7 +120,7 @@ if ( $_SESSION['user'] == "client") {
         		}
         	?>
 	    </script>
-	   
+
 	</body>
 	</html>
 <?php

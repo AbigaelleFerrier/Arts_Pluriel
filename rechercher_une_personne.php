@@ -10,7 +10,7 @@
 
 
 
-    <div class="container" style="margin-top : 2vw; margin-bottom : 2vw">
+    <div class="container" cntP="true" style="margin-top : 2vw; margin-bottom : 2vw">
         <div class="row">
           <div class="col s12">
               <table>
@@ -45,9 +45,7 @@
                 </table>
             </div>
         </div>
-    </div>
-    <div class="container " style="margin-top : 2vw; margin-bottom : 2vw">
-        <div class="row">
+        <div class="row" style="margin-top : 2vw; margin-bottom : 2vw">
               <div class="col s12">
                   <div id="Liste"></div>
               </div>

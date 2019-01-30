@@ -7,12 +7,12 @@
 <body>
 
     <?php include 'php/nav.php'; ?>
-    
 
-    <?php 
+
+    <?php
         /* Si id et renseigner dans la requette on affichera le profil de l'user */
         /* Si non si l'uszer est co il voie son profil [Variable monprofil pour savoir si il est sur son propre compte] */
-        /* Si non il est renvoyer a l'index */ 
+        /* Si non il est renvoyer a l'index */
 
         if ((isset($_GET['id']) && $_GET['id'] != "")) {
             $idUtilisateur_a_use = $_GET['id'];
@@ -32,7 +32,7 @@
             $traitement = $connexion->prepare($req);
             $traitement ->bindparam(1, $idUtilisateur_a_use);
             $traitement ->execute();
-            
+
             if ($traitement->fetch()) {
                $userCourant = $managerU->get($idUtilisateur_a_use);
             }
@@ -44,28 +44,28 @@
             header("location:index.php");
         }
     ?>
-    <div id="profil">
+    <div id="profil" cntP="true">
         <div class="container" >
             <div class="row">
                 <div class="cols12">
                     <h2 class="typoLogo"><?php echo $userCourant->getPseudo(); ?></h2>
-                </div>                
+                </div>
             </div>
-                
+
             <div class="row">
                 <div class="col m6 s12">
-                    <?php 
+                    <?php
                         // Calcule de l'age //
-                        $d = substr($userCourant->getDdn(), 0, 4);              
-                        $d = date('Y') - $d;   
-                    ?> 
+                        $d = substr($userCourant->getDdn(), 0, 4);
+                        $d = date('Y') - $d;
+                    ?>
 
                     <p> Age     : <?php echo $d; ?><br/>
                         Ville   : <?php echo $userCourant->getVille(); ?><br/>
                         Bio     : <?php echo $userCourant->getBio(); ?>
                     </p>
                 </div>
-            
+
                 <div class="col m6 s12">
                     <?php
                         $tabAct = $userCourant->getActivite($userCourant->getId());
@@ -75,19 +75,19 @@
                             echo '</div>';
                         }
                     ?>
-                </div> 
+                </div>
             </div>
 
-            <div class="row">                
-                <?php  
+            <div class="row">
+                <?php
                     // si il est connecter on le laisse aller modef c'est info
                     if ($monprofil == "ok" ) {
                 ?>
                         <div class="col s12 right">
                             <a class="btn right" href="profilModif.php">Modifier vos informations</a>
                         </div>
-                <?php  
-                    } 
+                <?php
+                    }
                 ?>
             </div>
         </div>
