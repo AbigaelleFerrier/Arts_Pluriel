@@ -134,8 +134,13 @@
     <?php
         if (isset($_GET['id']) && isset($_GET['idUser'])) {
             echo "message(". $_GET['id'] .",". $_GET['idUser'] .");";
-            echo 'document.getElementById("contenuTxt").focus();';
 
+        }
+
+        $path = $_SERVER['PHP_SELF']; // $path = /home/httpd/html/index.php
+        $file = basename ($path);
+        if ($file === 'forum.php') {
+            echo 'afficheForum();';
         }
     ?>
 

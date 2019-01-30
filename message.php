@@ -38,13 +38,7 @@
             // var_dump($idUserCourant);
             ?>
 
-            <form class="formMessage" method="post" name="formulaire" action="SaveMessage.php?id=<?php echo $idEnvoie; ?>&idUser=<?php echo $idUserCourant; ?>">
-                <textarea id="contenuTxt" name="contenuTxt"></textarea>
-                <div class="right">
-                    <button type="submit" class="btn">Envoyer</button>
-                </div>
-
-            </form>
+            
             <?php
         }
         catch(PDOException $e){

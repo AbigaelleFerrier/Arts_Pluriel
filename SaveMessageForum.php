@@ -1,7 +1,8 @@
 <?php
 
 require_once 'classes/incluDesClasses.php';
-$ctMs = $_POST['contenuTxt'];
+$order   = array("\r\n", "\n", "\r");
+$ctMs =  str_replace($order, '<br>',$_POST['contenuTxt']);
 $managerM = new MessageManager(database::getDB());
 
 $idEnvoie = null;

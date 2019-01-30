@@ -116,19 +116,55 @@ function SearchForumByAct(id = -1){
         xhr.send();
 }
 
-function message(idU, idUtilisateur_a_use) {
+var global_idU = '';
+var global_idUtilisateur_a_use = '';
+
+function message(idU, idUtilisateur_a_use, to = true) {
     var xhr = new XMLHttpRequest();
-        xhr.open("GET", "message.php?id=" + idU + "&idUser="+  idUtilisateur_a_use);
+        xhr.open("GET", "message.php?id=" + idU + "&idUser="+  idUtilisateur_a_use, true);
 
         xhr.onreadystatechange = function(){
             if (xhr.readyState == 4 && xhr.status == 200){
+                global_idU                  = idU;
+                global_idUtilisateur_a_use  = idUtilisateur_a_use;
                 document.getElementById('ListMessage').innerHTML = xhr.responseText;
-                document.getElementById("contenuTxt").focus();
+                if (to) {
+                    document.getElementById("form").innerHTML =
+                        '<form class="formMessage">' +
+                            '<textarea id="contenuTxt" name="contenuTxt"></textarea>'+
+                            '<div class="right">' +
+                                '<a onclick="sendMessage(' + idU + ',' + idUtilisateur_a_use + ')" class="btn">Envoyer</a>'+
+                            '</div>'+
+                        '</form>';
+
+                    document.getElementById("contenuTxt").focus();
+                }
+
             }
         }
         xhr.send();
+}
+
+function sendMessage(idU, idUtilisateur_a_use) {
+    var xhr = new XMLHttpRequest();
+        xhr.open("POST", 'SaveMessage.php?id='+ idU + '&idUser=' + idUtilisateur_a_use, true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+        xhr.onreadystatechange = function(){
+            if (xhr.readyState == 4 && xhr.status == 200){
+                messageRefresh();
+                document.getElementById('contenuTxt').value = '';
+                document.getElementById("contenuTxt").focus();
+            }
+        }
+        xhr.send("contenuTxt="+ document.getElementById('contenuTxt').value);
 
 }
 
+function messageRefresh() {
+    if (global_idU != '' && global_idUtilisateur_a_use != '') {
+        message(global_idU, global_idUtilisateur_a_use, false);
+    }
+}
 
-afficheForum();
+window.setInterval("messageRefresh()",3000);

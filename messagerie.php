@@ -39,6 +39,7 @@
         </div>
         <div class="col s8">
             <div id="ListMessage"></div>
+            <div id="form" style="margin-top: 2em"></div>
         </div>
     </div>
 
