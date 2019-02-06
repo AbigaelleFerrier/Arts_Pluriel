@@ -11,7 +11,7 @@ if ($_POST['contenuTxt'] != "") {
     $idF = null;
 
     $mes = new Message($ctMs,$idEnvoie,$idUserCourant,$idF);
-    $managerM->save($mes);
+    echo $managerM->save($mes);
     echo $ctMs;
 }
 ?>

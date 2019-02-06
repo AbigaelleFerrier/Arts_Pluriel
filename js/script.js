@@ -131,13 +131,16 @@ function message(idU, idUtilisateur_a_use, to = true) {
                 if (to) {
                     document.getElementById("form").innerHTML =
                         '<form class="formMessage">' +
-                            '<textarea id="contenuTxt" name="contenuTxt"></textarea>'+
+                            '<textarea id="contenuTxt" name="contenuTxt" ></textarea>'+
                             '<div class="right">' +
-                                '<a onclick="sendMessage(' + idU + ',' + idUtilisateur_a_use + ')" class="btn">Envoyer</a>'+
+                                '<a id="btnEnvoyer" onclick="sendMessage(' + idU + ',' + idUtilisateur_a_use + ')" class="btn">Envoyer</a>'+
                             '</div>'+
                         '</form>';
 
                     document.getElementById("contenuTxt").focus();
+                    var input = document.getElementById("contenuTxt");
+                    document.getElementById("contenuTxt").addEventListener("keyup", function(event) { event.preventDefault(); if (event.keyCode === 13) { document.getElementById("btnEnvoyer").click(); } });
+
                 }
 
             }
@@ -166,5 +169,7 @@ function messageRefresh() {
         message(global_idU, global_idUtilisateur_a_use, false);
     }
 }
+
+
 
 window.setInterval("messageRefresh()",3000);

@@ -2,11 +2,11 @@
 
 class database {
     //put your code here
-    private $serverName="localhost"; // 172.16.220.2
-    private $serverPort="3307"; //3306
+    private $serverName="172.16.220.2"; // 172.16.220.2
+    private $serverPort="3306"; //3306
     private $databaseName="ArtsPluriel";
     private $databaseUser="root";
-    private $databasePassword=""; //root
+    private $databasePassword="root"; //root
     private $databaseCharset="UTF8";
 
     //Attribut de type instance de PDO
